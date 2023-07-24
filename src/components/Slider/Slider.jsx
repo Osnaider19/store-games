@@ -1,5 +1,10 @@
 import React from "react";
 import { useFetch } from "../../hooks/useFech";
+import { convertirFecha } from "../../helpers/convertirFecha";
+import { Stores } from "./Stores";
+import { Genres } from "./Genres";
+import { RatingStar } from "./RatingStar";
+
 export function Slider() {
   const API_KEY = import.meta.env.VITE_API_KEY;
   const { data } = useFetch(`https://api.rawg.io/api/games?key=${API_KEY}`);
@@ -7,10 +12,11 @@ export function Slider() {
     <>
       {console.log(data)}
 
-      <div className="absolute left-0 top-0 h-screen w-full">
-        <div className="absolute left-0 top-0 h-screen w-full bg-[#00000090]"></div>
-        {data?.map((game) => (
-          <div key={game.id}>
+      <div className="relative left-0 top-0 h-screen w-full flex overflow-hidden ">
+        <div className="fixed left-0 pointer-events-none top-0 h-screen w-full 
+        bg-[#00000099]"></div>
+        {data?.slice(1, 5).map((game) => (
+          <div key={game.id} className="min-w-full ">
             <div
               style={{
                 background: `url(${game.background_image})`,
@@ -23,21 +29,13 @@ export function Slider() {
                 <p className="text-4xl">{game.name}</p>
 
                 <div className="relative w-full">
-                  <p>{game.released}</p>
-                  <p>{game.playtime}</p>
+                  <div className="flex py-3 items-center">
+                    <p> {convertirFecha(game.released)}</p>
+                  </div>
                 </div>
-                <div className=" relative w-full flex gap-2 overflow-hidden">
-                  {game.genres?.map((genre) => (
-                    <div className="">
-                      <p>{genre.name}</p>
-                      <img
-                        src={genre.image_background}
-                        alt=""
-                        className="max-w-[200px] max-h-[240px] h-full object-cover"
-                      />
-                    </div>
-                  ))}
-                </div>
+                <RatingStar rating={game.rating} votes={game.ratings_count}/>
+                <Genres genres={game.genres} />
+                <Stores stores={game.stores} />
               </div>
             </div>
           </div>

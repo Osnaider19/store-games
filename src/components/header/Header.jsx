@@ -5,7 +5,7 @@ import { Search } from "./Search";
 
 function Header() {
   return (
-    <div className="relative w-full py-3 px-9 flex  items-center z-50">
+    <div className="absolute left-0 top-0 w-full py-3 px-9 flex  items-center z-50">
       <Logo />
       <Nav />
       <Search />
