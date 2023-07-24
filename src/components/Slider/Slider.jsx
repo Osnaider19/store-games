@@ -8,7 +8,7 @@ export function Slider() {
       {console.log(data)}
 
       <div className="absolute left-0 top-0 h-screen w-full">
-        <div className="absolute left-0 top-0 h-screen w-full bg-[#00000080]"></div>
+        <div className="absolute left-0 top-0 h-screen w-full bg-[#00000090]"></div>
         {data?.map((game) => (
           <div key={game.id}>
             <div
@@ -19,17 +19,25 @@ export function Slider() {
               }}
               className="w-full h-screen"
             >
-              <div className="relative pt-32 w-[90%] m-auto z-30 ">
+              <div className="relative pt-32 w-[90%] h-full m-auto z-30 ">
                 <p className="text-4xl">{game.name}</p>
-                {data.genres?.map((genre) => (
-                  <div className="bg-red-500 px-4 relative">
-                    <p>{genre.name}</p>
-                    <img src={genre.image_background} alt="" />
-                  </div>
-                ))}
-              </div>
-              <div className="relative">
-                <p>{data?.released}</p>
+
+                <div className="relative w-full">
+                  <p>{game.released}</p>
+                  <p>{game.playtime}</p>
+                </div>
+                <div className=" relative w-full flex gap-2 overflow-hidden">
+                  {game.genres?.map((genre) => (
+                    <div className="">
+                      <p>{genre.name}</p>
+                      <img
+                        src={genre.image_background}
+                        alt=""
+                        className="max-w-[200px] max-h-[240px] h-full object-cover"
+                      />
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
