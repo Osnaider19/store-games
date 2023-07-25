@@ -6,7 +6,7 @@ import { FaCompass } from 'react-icons/fa'
 export const Menu = () => {
   return (
     <div className="fixed  left-0 top-0 h-screen w-[200px] z-50 bg-[#181515]">
-      <div className="pt-32 px-3">
+      <div className="pt-32 px-1">
         <ul>
           <ItemMenu link={`#`} name={`Home`} icon={<ImHome />} />
           <ItemMenu link={`#`} name={`Descubrir`} icon={<FaCompass/>} />
