@@ -3,9 +3,10 @@ import { useFetch } from "../../hooks/useFech";
 
 export const SliderGames = () => {
   const API_KEY = import.meta.env.VITE_API_KEY;
-  const { data } = useFetch(`https://api.rawg.io/api/games?key=${API_KEY}`);
+  const image = "resize/640/-/games/f59/";
+  const { data } = useFetch(`https://api.rawg.io/api/games?key=${API_KEY}&media=${image}`);
   return (
-    <div className="relative z-50">
+    <div className="relative  w-[95%] m-auto">
       {console.log(data)}
       <h1>Games</h1>
 
@@ -22,6 +23,11 @@ export const SliderGames = () => {
               </div>
               <div>
                 <p>{game.name}</p>
+              </div>
+              <div>
+                {game.short_screenshots?.map((capture)=>(
+                    <img src={capture.image} alt="" />
+                ))}
               </div>
             </div>
           </a>

@@ -10,11 +10,11 @@ export const RatingStar = ({ rating , votes}) => {
             console.log(Math.floor(rating));
           }
           return index < Math.floor(rating) ? (
-            <i className="text-2xl text-yellow-400">
+            <i className="text-2xl text-yellow-400" key={index}>
               <HiStar />
             </i>
           ) : (
-            <i className="text-2xl text-white">
+            <i className="text-2xl text-white" key={index}>
               <HiStar />
             </i>
           );
