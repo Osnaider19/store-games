@@ -34,7 +34,15 @@ export function Slider() {
                     <p> {convertirFecha(game.released)}</p>
                   </div>
                 </div>
-                <RatingStar rating={game.rating} votes={game.ratings_count} />
+                <div className="">
+                  <p>Calificación</p>
+                  <div className="text-2xl">
+                    <RatingStar
+                      rating={game.rating}
+                      votes={game.ratings_count}
+                    />
+                  </div>
+                </div>
                 <Genres genres={game.genres} />
                 <Stores stores={game.stores} />
               </div>

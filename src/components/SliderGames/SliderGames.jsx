@@ -1,33 +1,33 @@
 import React from "react";
 import { useFetch } from "../../hooks/useFech";
+import { HiStar } from "react-icons/hi";
+import { SliderCapture } from "./SliderCapture";
+import { GenresGames } from "./GenresGames";
 
 export const SliderGames = () => {
   const API_KEY = import.meta.env.VITE_API_KEY;
   const image = "resize/640/-/games/f59/";
-  const { data } = useFetch(`https://api.rawg.io/api/games?key=${API_KEY}`);
+  const { data } = useFetch(
+    `https://api.rawg.io/api/games?key=${API_KEY}&resize=640`
+  );
   return (
     <div className="relative  w-[95%] m-auto">
-      {console.log(data)}
-      <h1>Games</h1>
-
+      <h1 className="py-3 text-3xl font-bold">Juegos Populares</h1>
       <div className="relative flex flex-wrap gap-5 justify-between">
         {data?.map((game) => (
-          <div className="relative rounded-md overflow-hidden bg-slate-900">
-            <div className="relative w-full flex  flex-nowrap max-w-[300px] h-[350px] overflow-hidden">
-              {game.short_screenshots?.map((capture) => (
-                <div className="min-w-full min-h-full">
-                  <div>
-                    <img
-                      src={capture.image}
-                      alt=""
-                      className="w-full min-w-full h-full object-cover"
-                    />
-                  </div>
-                </div>
-              ))}
-            </div>
-            <div>
-              <p>{game.name}</p>
+          <div className="relative rounded-md max-w-[300px]  overflow-hidden">
+            <SliderCapture capture={game.short_screenshots} />
+            <div className="py-2 px-2">
+              <div>
+                <p className="text-xl">{game.name}</p>
+              </div>
+              <div className="flex items-center gap-2 pt-1">
+                <i className="text-xl text-yellow-400">
+                  <HiStar />
+                </i>
+                <p>{game.rating}</p>
+              </div>
+              <GenresGames genres={game.genres} />
             </div>
           </div>
         ))}
