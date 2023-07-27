@@ -1,37 +1,39 @@
 import React from "react";
-import { Button } from "./Button";
-import "./index.css";
-import { useRef } from "react";
-import { handelScrollLeft, handelScrollRigth } from "./FuntionScroll";
+import { Pagination,  A11y, EffectFade } from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/react";
+
+
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import "swiper/css/scrollbar";
+import 'swiper/css/effect-fade';
+
 export const SliderCapture = ({ capture }) => {
-  const refSliderCapture = useRef();
   return (
-    <>
-      <div className="relative w-full  content-img-capture">
-        <Button
-          scrollLeft={() => {
-            handelScrollLeft(refSliderCapture);
-          }}
-          scrollRigth={() => {
-            handelScrollRigth(refSliderCapture);
-          }}
-        />
-        <div
-          className="relative w-full flex  flex-nowrap max-w-[300px] h-[310px] scroll-smooth snap-mandatory snap-x overflow-hidden transition-all duration-200 "
-          ref={refSliderCapture}
-        >
-          {capture?.map((capture) => (
-            <div className="relative min-w-full min-h-full snap-center" key={capture.id}>
+    <div className="relative rounded-lg w-full  overflow-hidden">
+      <Swiper
+        modules={[Pagination, EffectFade, A11y]}
+        spaceBetween={50}
+        slidesPerView={1}
+        pagination={{
+          clickable: true,
+        }}
+        effect={`fade`}
+      >
+        {capture.map((img) => (
+          
+            <SwiperSlide key={img.id}>
               <img
-                loading="lazy"
-                src={capture.image.replace("media/", `media/crop/600/400/`)}
+                src={img.image.replace("media/", `media/crop/600/400/`)}
                 alt=""
-                className="w-full min-w-full h-full object-cover"
+                loading="lazy"
+                className="w-full h-full max-h-[205px] max-w-[311px] object-cover"
               />
-            </div>
-          ))}
-        </div>
-      </div>
-    </>
+            </SwiperSlide>
+          
+        ))}
+      </Swiper>
+    </div>
   );
 };

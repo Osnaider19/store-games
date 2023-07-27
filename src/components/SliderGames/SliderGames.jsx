@@ -10,7 +10,7 @@ export const SliderGames = () => {
   const API_KEY = import.meta.env.VITE_API_KEY;
   const refSliderGames = useRef();
   const { data } = useFetch(
-    `https://api.rawg.io/api/games?key=${API_KEY}&page=3&2020-01-01,2023-12-31`
+    `https://api.rawg.io/api/games?key=${API_KEY}&page=2&page_size=30`
   );
   return (
     <div className="relative  w-[95%] m-auto">
@@ -23,12 +23,12 @@ export const SliderGames = () => {
         }}
       />
       <div
-        className="relative w-full flex  gap-5 justify-between overflow-hidden snap-mandatory scroll-smooth"
+        className="relative w-full flex  gap-5 justify-between overflow-hidden snap-mandatory scroll-smooth "
         ref={refSliderGames}
       >
         {data?.map((game) => (
           <div
-            className="relative rounded-md max-w-[300px]  min-w-[300px]  overflow-hidden"
+            className="relative rounded-lg max-w-[300px] h-full min-w-[300px]  overflow-hidden"
             key={game.id}
           >
             <SliderCapture capture={game.short_screenshots} />

@@ -7,7 +7,7 @@
     display: none;
     transition: all .4s ease-in-out;
     align-items: center;
-    background-color: rgba(0, 0, 0, .40);
+    
     color: aliceblue;
     z-index: 50;
 }
