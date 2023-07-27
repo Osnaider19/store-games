@@ -3,19 +3,34 @@ import { useFetch } from "../../hooks/useFech";
 import { HiStar } from "react-icons/hi";
 import { SliderCapture } from "./SliderCapture";
 import { GenresGames } from "./GenresGames";
-
+import { ButtonSlider } from "./ButtonSlider";
+import { useRef } from "react";
+import { handelScrollLeft, handelScrollRigth } from "./FuntionScroll";
 export const SliderGames = () => {
   const API_KEY = import.meta.env.VITE_API_KEY;
-  const image = "resize/640/-/games/f59/";
+  const refSliderGames = useRef();
   const { data } = useFetch(
-    `https://api.rawg.io/api/games?key=${API_KEY}&resize=640`
+    `https://api.rawg.io/api/games?key=${API_KEY}&page=3&2020-01-01,2023-12-31`
   );
   return (
     <div className="relative  w-[95%] m-auto">
-      <h1 className="py-3 text-3xl font-bold">Juegos Populares</h1>
-      <div className="relative flex flex-wrap gap-5 justify-between">
+      <ButtonSlider
+        scrollLeft={() => {
+          handelScrollRigth(refSliderGames);
+        }}
+        scrollRigth={() => {
+          handelScrollLeft(refSliderGames);
+        }}
+      />
+      <div
+        className="relative w-full flex  gap-5 justify-between overflow-hidden snap-mandatory scroll-smooth"
+        ref={refSliderGames}
+      >
         {data?.map((game) => (
-          <div className="relative rounded-md max-w-[300px]  overflow-hidden">
+          <div
+            className="relative rounded-md max-w-[300px]  min-w-[300px]  overflow-hidden"
+            key={game.id}
+          >
             <SliderCapture capture={game.short_screenshots} />
             <div className="py-2 px-2">
               <div>
