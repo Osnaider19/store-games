@@ -1,15 +1,14 @@
 import React from "react";
-export const ItemMenu = ({ link, name , icon }) => {
+import { Link } from "react-router-dom";
+export const ItemMenu = ({ link, name, icon }) => {
   return (
-    <a href={link}>
+    <Link to={link}>
       <li className="flex items-center py-3 hover:bg-[#332e2e] rounded-md">
-        <i className="px-2">
-            {icon}
-        </i>
+        <i className="px-2">{icon}</i>
         <div>
-          <span className="text-xl">{name}</span>
+          <span className="text-lg">{name}</span>
         </div>
       </li>
-    </a>
+    </Link>
   );
 };

@@ -1,0 +1,18 @@
+.menu__container{
+    overflow-y: hidden;
+    transition: all .4s ;
+}
+.menu__container:hover{
+    overflow-y: auto;
+    transition: all .4s ;
+}
+.menu__container::-webkit-scrollbar{
+  width: 8px;
+  background: rgba(255, 255, 255, .2);
+  transition: all .4s ;
+}
+.menu__container::-webkit-scrollbar-thumb{
+    width: 8px;
+    background: rgba(255, 255, 255, .5);
+    transition: all .4s ;
+  }

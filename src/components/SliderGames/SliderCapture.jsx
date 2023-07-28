@@ -28,7 +28,7 @@ export const SliderCapture = ({ capture }) => {
                 src={img.image.replace("media/", `media/crop/600/400/`)}
                 alt=""
                 loading="lazy"
-                className="w-full h-full max-h-[205px] max-w-[311px] object-cover"
+                className="w-full h-full min-h-[205px] min-w-[311px] max-h-[205px] max-w-[311px] object-cover"
               />
             </SwiperSlide>
           

@@ -6,7 +6,7 @@ import "swiper/css/pagination";
 
 export const SliderScreenshots = ({ images }) => {
   return (
-    <div className="relative w-[90%] m-auto pt-10">
+    <div className="relative w-[95%] m-auto pt-10">
       <Swiper
         // install Swiper modules
         modules={[Navigation, Pagination, A11y]}
