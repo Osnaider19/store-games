@@ -3,20 +3,11 @@ export const useFetch = (url) => {
   const [data, setData] = useState(null);
   const [isPending, setIsPending] = useState(true);
   const [error, setError] = useState(null);
-  const options = {
-    headers: {
-      "content-type": "aplicación/json",
-    },
-    boby: {
-      rating: 0,
-    },
-  };
 
   useEffect(() => {
     const getData = async (url) => {
       try {
-        const res = await fetch(url, options);
-
+        const res = await fetch(url);
         if (!res.ok) {
           throw {
             err: true,
@@ -25,8 +16,8 @@ export const useFetch = (url) => {
           };
         }
 
-        let data = await res.json();
-        console.log(data)
+        const data = await res.json();
+        console.log(data);
         setIsPending(false);
         setData(data.results);
         setError({ err: false });
@@ -39,5 +30,5 @@ export const useFetch = (url) => {
     getData(url);
   }, [url]);
 
-  return { data, isPending, error };
+  return { data, isPending, error  , setIsPending };
 };

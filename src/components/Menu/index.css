@@ -1,6 +1,7 @@
 .menu__container{
     overflow-y: hidden;
     transition: all .4s ;
+
 }
 .menu__container:hover{
     overflow-y: auto;
