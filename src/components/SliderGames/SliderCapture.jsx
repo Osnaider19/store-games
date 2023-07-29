@@ -31,7 +31,6 @@ export const SliderCapture = ({ capture }) => {
                 className="w-full h-full min-h-[205px] min-w-[311px]  object-cover"
               />
             </SwiperSlide>
-          
         ))}
       </Swiper>
     </div>
