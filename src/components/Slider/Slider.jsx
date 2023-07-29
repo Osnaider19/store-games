@@ -17,8 +17,8 @@ export function Slider() {
           className="fixed left-0 pointer-events-none top-0 h-screen w-full 
         bg-[#00000099]"
         ></div>
-        {data?.slice(1, 5).map((game) => (
-          <div key={game.id} className=" min-w-full ">
+        {data?.results.slice(1, 5).map((game) => (
+          <div key={game.id} className="min-w-full ">
             <div
               style={{
                 background: `url(${game.background_image})`,

@@ -18,7 +18,7 @@ export const Genres = () => {
       <div className="px-5">
         <h1 className="py-3 text-4xl font-bold">Juegos de {name}</h1>
         <div className="flex flex-wrap w-full gap-3 justify-between">
-          {data?.map((game) => (
+          {data?.results.map((game) => (
             <div
               className="relative rounded-lg max-w-[350px] h-full min-w-[270px]  overflow-hidden "
               key={game.id}
@@ -26,6 +26,7 @@ export const Genres = () => {
               <Card
                 capture={game.short_screenshots}
                 name={game.name}
+                id={game.id}
                 genres={game.genres}
                 star={game.rating}
                 date={game.released}

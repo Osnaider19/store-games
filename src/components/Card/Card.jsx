@@ -3,12 +3,15 @@ import { SliderCapture } from "../SliderGames/SliderCapture";
 import { Star } from "../SliderGames/Star";
 import { convertirFecha } from "../../helpers/convertirFecha";
 import { GenresGames } from "../SliderGames/GenresGames";
-export const Card = ({ capture, name, star, genres, date }) => {
+import { Link } from "react-router-dom";
+export const Card = ({ capture, name, id, star, genres, date }) => {
   return (
     <div>
       <SliderCapture capture={capture} />
       <div>
-        <p className="text-xl">{name}</p>
+        <Link to={`/games/${id}`} className="font-semibold hover:opacity-80">
+          <p className="text-xl py-1">{name}</p>
+        </Link>
       </div>
       <Star rating={star} />
       <GenresGames genres={genres} />

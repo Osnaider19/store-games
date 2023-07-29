@@ -1,10 +1,13 @@
-import React from 'react'
-import { Main } from '../components/Main/Main'
+import React from "react";
+import { Layout } from "../components/Layout/Layout";
+import { Slider } from "../components/Slider/Slider";
+import { SliderGames } from "../components/SliderGames/SliderGames";
 
 export const Home = () => {
   return (
-    <div>
-        <Main/>
-    </div>
-  )
-}
+    <Layout>
+      <Slider />
+      <SliderGames />
+    </Layout>
+  );
+};

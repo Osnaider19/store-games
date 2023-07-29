@@ -23,7 +23,7 @@ export const SliderGames = () => {
         className="relative w-full flex  gap-5 justify-between py-5 overflow-hidden snap-mandatory scroll-smooth "
         ref={refSliderGames}
       >
-        {data?.map((game) => (
+        {data?.results.map((game) => (
           <div
             className="relative rounded-lg max-w-[270px] h-full min-w-[270px]  overflow-hidden"
             key={game.id}
@@ -31,6 +31,7 @@ export const SliderGames = () => {
             <Card
               capture={game.short_screenshots}
               name={game.name}
+              id={game.id}
               genres={game.genres}
               star={game.rating}
               date={game.released}
