@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { API_KEY } from "../config/config";
 export const useFetch = (url) => {
   const [data, setData] = useState(null);
   const [isPending, setIsPending] = useState(true);
@@ -17,7 +18,7 @@ export const useFetch = (url) => {
         }
 
         const data = await res.json();
-        
+
         //console.log(data);
         setIsPending(false);
         setData(data);
@@ -31,5 +32,5 @@ export const useFetch = (url) => {
     getData(url);
   }, [url]);
 
-  return { data, isPending, error  , setIsPending };
+  return { data, isPending, error, setIsPending };
 };
