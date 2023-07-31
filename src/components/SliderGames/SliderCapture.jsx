@@ -21,7 +21,7 @@ export const SliderCapture = ({ capture }) => {
         }}
         effect={`fade`}
       >
-        {capture.map((img) => (
+        {capture?.map((img) => (
           
             <SwiperSlide key={img.id}>
               <img

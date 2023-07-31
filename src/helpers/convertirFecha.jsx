@@ -1,4 +1,5 @@
 export const convertirFecha = (fechaOriginal) => {
+  if (fechaOriginal) {
     const partesFecha = fechaOriginal.split("-");
     const fecha = new Date(partesFecha[0], partesFecha[1] - 1, partesFecha[2]);
     const meses = [
@@ -16,6 +17,9 @@ export const convertirFecha = (fechaOriginal) => {
       "dic",
     ];
     const nombreMes = meses[fecha.getMonth()];
-    const nuevaFecha = fecha.getDate() + " " + nombreMes + " " + fecha.getFullYear();
-    return nuevaFecha
-  };
+    const nuevaFecha =
+      fecha.getDate() + " " + nombreMes + " " + fecha.getFullYear();
+    return nuevaFecha;
+  }
+  return
+};
