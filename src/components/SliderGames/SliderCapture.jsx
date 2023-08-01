@@ -25,10 +25,10 @@ export const SliderCapture = ({ capture }) => {
           
             <SwiperSlide key={img.id}>
               <img
-                src={img.image.replace("media/", `media/crop/600/400/`)}
+                src={img.image.replace("media/", `media/resize/420/-/`)}
                 alt=""
                 loading="lazy"
-                className="w-full h-full min-h-[205px] min-w-[311px]  object-cover"
+                className="w-full h-full min-h-[205px] max-h-[205px] min-w-[311px]  object-cover"
               />
             </SwiperSlide>
         ))}

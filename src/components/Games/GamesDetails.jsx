@@ -7,6 +7,8 @@ import { convertirFecha } from "../../helpers/convertirFecha";
 import { Background } from "./Background";
 import { About } from "./About";
 import { Screenshots } from "./Screenshots";
+import { Ratings } from "./Ratings";
+import { Platfroms } from "./Platfroms";
 export const GamesDetails = () => {
   const { id } = useParams();
   const { data } = useFetch(`${URL}/games/${id}?key=${API_KEY}`);
@@ -20,25 +22,28 @@ export const GamesDetails = () => {
             <div className="min-w-full px-7 pt-10">
               <div className="relative z-10">
                 <div className="relative flex w-full">
-                  <div className="flex flex-col w-[50%]">
-                    <h1 className="text-5xl py-3">{data.name}</h1>
+                  <div className="flex flex-col max-w-[70%] ">
+                    <h1 className="text-5xl py-3 font-bold">{data.name}</h1>
+                    <Ratings
+                      ratings={data.ratings}
+                      ratings_count={data.ratings_count}
+                      released={data.released}
+                    />
                     <div>
-                      <p>{convertirFecha(data.released)}</p>
-                      <p>Recommended </p>
-                      {data.ratings.map((rating) => (
-                        <div className="flex" key={rating.id}>
-                          <p>{rating.title} : </p>
-                          <p>{rating.count}</p>
-                        </div>
-                      ))}
+                      <p className="text-xl">Metascore {data.metacritic}</p>
                     </div>
+                    <div>
+                      <Platfroms Platfroms={data.parent_platforms} />
+                    </div>
+                    
                   </div>
+
                   <div className="w-[50%]">
                     
                   </div>
                 </div>
-                <About about={data.description} />
                 <Screenshots id={data.id} />
+                <About about={data.description} />
               </div>
             </div>
           </div>
