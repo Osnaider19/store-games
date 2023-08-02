@@ -8,12 +8,13 @@ import Top from "./Top";
 import { Genres } from "./Genres";
 import "./index.css";
 import { Logo } from "./Logo";
+import { Search } from "./Search";
 export const Menu = () => {
   return (
-    <div>
-      <div className="fixed  left-0 top-0 h-screen w-[220px] z-50  menu__container">
+    <>
+      <div className="menu__container">
+        <Logo />
         <nav className="px-1">
-          <Logo />
           <ul>
             <ItemMenu link={`/`} name={`Home`} icon={<ImHome />} />
             <ItemMenu link={`#`} name={`All Games`} icon={<FaGamepad />} />
@@ -24,6 +25,7 @@ export const Menu = () => {
           </ul>
         </nav>
       </div>
-    </div>
+      <Search />
+    </>
   );
 };

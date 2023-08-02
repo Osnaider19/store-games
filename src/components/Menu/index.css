@@ -1,19 +1,26 @@
 .menu__container{
     overflow-y: hidden;
     transition: all .4s ;
-
+    background-color: #121212;
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100vh;
+    width: 220px;
+    z-index: 60;
 }
 .menu__container:hover{
     overflow-y: auto;
     transition: all .4s ;
 }
 .menu__container::-webkit-scrollbar{
-  width: 8px;
+  width: 5px;
   background: rgba(255, 255, 255, .2);
   transition: all .4s ;
 }
 .menu__container::-webkit-scrollbar-thumb{
-    width: 8px;
-    background: rgba(255, 255, 255, .5);
+    width: 5px;
+    background:#332e2e;
     transition: all .4s ;
+    border-radius: 50px;
   }

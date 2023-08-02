@@ -3,7 +3,6 @@ import { useParams } from "react-router-dom";
 import { Layout } from "../Layout/Layout";
 import { useFetch } from "../../hooks/useFech";
 import { URL, API_KEY } from "../../config/config";
-import { convertirFecha } from "../../helpers/convertirFecha";
 import { Background } from "./Background";
 import { About } from "./About";
 import { Screenshots } from "./Screenshots";
@@ -19,7 +18,7 @@ export const GamesDetails = () => {
         <Layout>
           <div className="relative   w-full flex overflow-hidden ">
             <Background background={data.background_image} />
-            <div className="min-w-full px-7 pt-10">
+            <div className="min-w-full px-7 pt-16">
               <div className="relative z-10">
                 <div className="relative flex w-full">
                   <div className="flex flex-col max-w-[70%] ">
@@ -35,15 +34,11 @@ export const GamesDetails = () => {
                     <div>
                       <Platfroms Platfroms={data.parent_platforms} />
                     </div>
-                    
                   </div>
-
-                  <div className="w-[50%]">
-                    
-                  </div>
+                  <div className="w-[50%]"></div>
                 </div>
-                <Screenshots id={data.id} />
                 <About about={data.description} />
+                <Screenshots id={data.id} />
               </div>
             </div>
           </div>

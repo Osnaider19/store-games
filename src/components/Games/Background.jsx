@@ -12,7 +12,7 @@ export const Background = ({ background }) => {
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
       }}
-      className="absolute left-0 top-0 w-full h-[550px]"
+      className="absolute  left-0 top-[60px] w-full h-[550px]"
     >
       <div
         className="absolute left-0 top-0 w-full h-[1050px] z-10"

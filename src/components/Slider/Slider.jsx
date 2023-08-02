@@ -12,7 +12,7 @@ export function Slider() {
     <>
       {console.log(data)}
 
-      <div className="relative  h-screen w-full flex overflow-hidden ">
+      <div className="relative top-[60px] h-screen w-full flex overflow-hidden ">
         <div
           className="fixed left-0 pointer-events-none top-0 h-screen w-full 
         bg-[#00000099]"

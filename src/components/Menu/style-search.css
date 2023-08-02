@@ -1,13 +1,14 @@
 .header{
-    position: relative;
-    
+    position: fixed;
+    left: 0;
+    top: 0;
     padding: 5px 0;
     z-index: 99;
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    background: rgba(255,255,255,0.05);
+    background: #121212;
   }
   .container-search{
     position: relative;
