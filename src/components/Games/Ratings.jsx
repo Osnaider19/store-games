@@ -8,16 +8,16 @@ export const Ratings = ({ ratings, ratings_count, released }) => {
         <p className="py-1 font-bold">{convertirFecha(released)}</p>
       </div>
       <p className="text-3xl font-semibold py-2">Recommended</p>
-      <div>
-        <p className="text-xl uppercase pb-2">rantings {ratings_count}</p>
+      <div className="relative mb-2  py-1 px-3 border bg-black/80 rounded-xl flex items-center ">
+        <p className="flex">{ratings_count} Rantings </p>
       </div>
-      <div className="flex gap-3 items-center flex-wrap">
+      <div className="flex gap-1 items-center flex-wrap">
         {ratings?.map((rating) => (
           <div
-            className="flex items-center gap-3 flex-nowrap py-1  px-4 border rounded-full hover:scale-110 cursor-pointer transition-transform duration-300"
+            className="flex items-center gap-2 flex-nowrap py-1  px-4 border rounded-full  cursor-pointer bg-black/80"
             key={rating.id}
           >
-            <p className="text-xl">{rating.title}:</p>
+            <p>{rating.title}:</p>
             <p>{rating.count}</p>
           </div>
         ))}

@@ -17,8 +17,7 @@ export const Menu = () => {
         <nav className="px-1">
           <ul>
             <ItemMenu link={`/`} name={`Home`} icon={<ImHome />} />
-            <ItemMenu link={`#`} name={`All Games`} icon={<FaGamepad />} />
-            <ItemMenu link={`search`} name={`Search`} icon={<BsSearch />} />
+            <ItemMenu link={`/games`} name={`All Games`} icon={<FaGamepad />} />
             <Plataforms />
             <Top />
             <Genres />
