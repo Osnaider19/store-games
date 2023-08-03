@@ -1,20 +1,17 @@
 import React from "react";
 import { convertirFecha } from "../../helpers/convertirFecha";
+import { RatingColor } from "../../helpers/RatingColor";
 
-export const Ratings = ({ ratings, ratings_count, released }) => {
+export const Ratings = ({ ratings, ratings_count }) => {
   return (
     <div className="relative w-full">
-      <div className="bg-black/50 rounded-lg w-auto inline-block px-3">
-        <p className="py-1 font-bold">{convertirFecha(released)}</p>
+      <div className="relative mb-2  py-1 font-semibold rounded-xl flex items-center ">
+        <p className="flex">{ratings_count} Rantings</p>
       </div>
-      <p className="text-3xl font-semibold py-2">Recommended</p>
-      <div className="relative mb-2  py-1 px-3 border bg-black/80 rounded-xl flex items-center ">
-        <p className="flex">{ratings_count} Rantings </p>
-      </div>
-      <div className="flex gap-1 items-center flex-wrap">
+      <div className="flex gap-2 items-center flex-wrap">
         {ratings?.map((rating) => (
           <div
-            className="flex items-center gap-2 flex-nowrap py-1  px-4 border rounded-full  cursor-pointer bg-black/80"
+            className={`flex items-center gap-2 flex-nowrap py-1  px-2 rounded-lg capitalize font-semibold  cursor-pointer ${RatingColor(rating.title)}`}
             key={rating.id}
           >
             <p>{rating.title}:</p>

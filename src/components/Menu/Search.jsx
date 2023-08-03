@@ -1,8 +1,10 @@
 import "./style-search.css";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useFetch } from "../../hooks/useFech";
 import { URL, API_KEY } from "../../config/config";
 import { Link } from "react-router-dom";
+import { CardSearch } from "./CardSearch";
+import { Background } from "../Games/Background";
 
 export const Search = () => {
   const [input, setInput] = useState("");
@@ -26,28 +28,27 @@ export const Search = () => {
             }}
           />
           {input && (
-            <div className="absolute left-0 top-[60px] w-full overflow-hidden overflow-y-auto  rounded-2xl  bg-blue-600">
-              <div className="relative w-full h-full flex flex-wrap overflow-y-auto px-3 py-3 gap-1">
-                {data.results?.map((game) => (
-                  <Link to={`/games/${game.id}`} className="w-full rounded-lg overflow-hidden hover:bg-black/50">
-                    <div className="relative flex  gap-2 min-w-full ">
-                      <div className="">
-                      <img
-                        src={game.background_image?.replace(
-                          "media/",
-                          `media/resize/420/-/`
-                        )}
-                        alt=""
-                        loading="lazy"
-                        className="w-[100px] h-[100px] object-cover rounded-lg overflow-hidden"
-                      />
+            <>
+              <div
+                className="fixed left-0 top-0 w-full h-full -z-10 "
+                onClick={() => {
+                  setInput("");
+                }}
+              ></div>
+              <div className="content__results">
+                <div className="content__results__search">
+                  <div className="relative w-full h-full flex flex-wrap  px-3 py-3 gap-1">
+                    {data.results.length !== 0 ? (
+                      <CardSearch games={data.results} />
+                    ) : (
+                      <div className="pt-10 w-full">
+                        <p className="text-3xl text-center">Sin resultados</p>
                       </div>
-                      <p>{game.name}</p>
-                    </div>
-                  </Link>
-                ))}
+                    )}
+                  </div>
+                </div>
               </div>
-            </div>
+            </>
           )}
         </div>
       </div>

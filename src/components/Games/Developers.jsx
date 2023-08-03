@@ -1,14 +1,14 @@
-import React from 'react'
+import React from "react";
 
-export const Developers = ({developers}) => {
+export const Developers = ({ developers }) => {
   return (
     <div>
-      {developers.map((developer)=>(
-        <div>
-            <p>{developer.name}</p>
-            <img src={developer.image_background} alt="" className='w-[200px]' />
+      <p className="text-lg font-semibold">Developers</p>
+      {developers.map((developer) => (
+        <div key={developer.id}>
+          <p>{developer.name}</p>
         </div>
       ))}
     </div>
-  )
-}
+  );
+};
