@@ -20,7 +20,7 @@ export const Platfroms = ({ Platfroms }) => {
     }
   };
   return (
-    <div className="flex gap-3 py-1">
+    <div className="flex gap-3 py-2">
       {Platfroms?.map(({ platform }) => (
         <div key={platform.id}>
           <i className="text-2xl">{icon(platform.slug)}</i>

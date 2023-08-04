@@ -11,6 +11,7 @@ import { Ratings } from "./Ratings";
 import { Platfroms } from "./Platfroms";
 import { Developers } from "./Developers";
 import { Publisher } from "./Publisher";
+import { ScoreColor } from "../../helpers/ScoreColor";
 export const GamesDetails = () => {
   const { id } = useParams();
   const { data } = useFetch(`${URL}/games/${id}?key=${API_KEY}`);
@@ -20,7 +21,7 @@ export const GamesDetails = () => {
       {data && (
         <Layout>
           <div className="relative   w-full flex overflow-hidden ">
-            
+          <Background background={data.background_image} />
             <div className="min-w-full px-7 pt-16">
               <div className="relative z-10">
                 <div className="relative flex w-full">
@@ -35,17 +36,29 @@ export const GamesDetails = () => {
                       ratings={data.ratings}
                       ratings_count={data.ratings_count}
                     />
-                    <div className="py-2">
-                      <p className="text-lg">Metascore</p>
-                      <div className="py-1">
-                        <span className="text-xl py-1 px-1 border rounded-lg">
-                          {data.metacritic}
-                        </span>
-                      </div>
-                    </div>
                     <Platfroms Platfroms={data.parent_platforms} />
-                    <Developers developers={data.developers}/>
-                    <Publisher publisher={data.publishers}/>
+
+                    <div className="flex gap-6 items-start py-2">
+                      {data.metacritic && (
+                        <div>
+                          <p className="text-lg">Metascore</p>
+                          <div className="py-1 flex flex-col justify-center items-start">
+                            <span
+                            className={`text-xl py-1 px-1 border-2 rounded-lg 
+                            text-${ScoreColor(
+                              data.metacritic
+                            )} 
+                            border-${ScoreColor(data.metacritic)} `}
+                            
+                            >
+                              {data.metacritic}
+                            </span>
+                          </div>
+                        </div>
+                      )}
+                      <Developers developers={data.developers} />
+                      <Publisher publisher={data.publishers} />
+                    </div>
                   </div>
                   <div className="w-[50%]"></div>
                 </div>

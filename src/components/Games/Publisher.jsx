@@ -3,7 +3,7 @@ import React from "react";
 export const Publisher = ({ publisher }) => {
   return (
     <div>
-      <h3>Publisher</h3>
+      <h3 className="font-semibold text-lg">Publisher</h3>
       {publisher?.map((publishe) => (
         <div key={publishe.id}>
           <span>{publishe.name}</span>
