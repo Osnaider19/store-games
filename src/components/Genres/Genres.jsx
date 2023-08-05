@@ -33,7 +33,7 @@ export const Genres = () => {
                 name={game.name}
                 id={game.id}
                 genres={game.genres}
-                star={game.rating}
+                rating={game.rating}
                 date={game.released}
               />
             </div>
