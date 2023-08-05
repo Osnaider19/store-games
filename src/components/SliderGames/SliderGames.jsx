@@ -8,7 +8,9 @@ import { Card } from "../Card/Card";
 
 export const SliderGames = () => {
   const refSliderGames = useRef();
-  const { data } = useFetch(`${URL}/games?key=${API_KEY}`);
+  const { data } = useFetch(
+    `${URL}/games?key=${API_KEY}&dates=2020-01-01,2022-12-31`
+  );
   return (
     <div className="relative  w-[95%] m-auto">
       <ButtonSlider
@@ -23,7 +25,7 @@ export const SliderGames = () => {
         className="relative w-full flex  gap-5 justify-between py-5 overflow-hidden snap-mandatory scroll-smooth "
         ref={refSliderGames}
       >
-        {data?.results.map((game) => (
+        {data.results?.map((game) => (
           <div
             className="relative rounded-lg max-w-[270px] h-full min-w-[270px]  overflow-hidden"
             key={game.id}
@@ -33,7 +35,7 @@ export const SliderGames = () => {
               name={game.name}
               id={game.id}
               genres={game.genres}
-              star={game.rating}
+              rating={game.rating}
               date={game.released}
             />
           </div>

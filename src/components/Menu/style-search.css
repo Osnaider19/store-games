@@ -32,6 +32,10 @@
     backdrop-filter: blur(3px);
     border: 1px solid rgba(255,255,255,0.025);
     color: floralwhite;
+    transition: all .3s ;
+  }
+  .input-search:focus{
+    outline: 1px solid rgba(255,255,255,0.5);
   }
   .content__results{
     position: absolute;

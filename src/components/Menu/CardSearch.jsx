@@ -1,10 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Ratings } from "../Games/Ratings";
-import { Star } from "../SliderGames/Star";
-import { RatingStar } from "../Slider/RatingStar";
 import { convertirFecha } from "../../helpers/convertirFecha";
-export const CardSearch = ({ games }) => {
+export const CardSearch = ({ games , setInput }) => {
   return (
     <>
       {games?.map((game) => (
@@ -12,6 +9,9 @@ export const CardSearch = ({ games }) => {
           to={`/games/${game.id}`}
           className="w-full rounded-lg overflow-hidden hover:bg-black/50"
           key={game.id}
+          onClick={()=>{
+            setInput("")
+          }}
         >
           <div className="relative flex  gap-2 min-w-full ">
             <div className="">

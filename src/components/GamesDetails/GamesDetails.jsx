@@ -17,6 +17,7 @@ import { Title } from "./Title";
 import { Achievements } from "./Achievements";
 export const GamesDetails = () => {
   const { data } = useContext(ContextDetails);
+  document.title = data?.name
   return (
     <>
       {console.log(data)}
