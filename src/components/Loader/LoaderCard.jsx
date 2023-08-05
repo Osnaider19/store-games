@@ -3,7 +3,7 @@ import "./index.css";
 export const LoaderCard = () => {
   return (
     <div className="flex h-screen justify-center items-center">
-      <span class="loader"></span>
+      <span className="loader"></span>
     </div>
   );
 };

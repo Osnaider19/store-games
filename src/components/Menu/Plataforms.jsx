@@ -1,4 +1,3 @@
-import React from "react";
 import { BsXbox, BsPlaystation, BsWindows, BsAndroid2 } from "react-icons/bs";
 import { AiFillApple } from "react-icons/ai";
 import { ItemMenu } from "./ItemMenu";

@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
+import { ContextDetails } from "../../Context/contextDetails/ContextDetails";
 
-export const Background = ({ background }) => {
+export const Background = () => {
+  const { data } = useContext(ContextDetails);
   return (
     <div
       style={{
-        backgroundImage: `url(${background.replace(
+        backgroundImage: `url(${data.background_image.replace(
           "media/games/",
           "media/resize/1280/-/games/"
         )})`,

@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { ContextDetails } from "../../Context/contextDetails/ContextDetails";
 
-export const Genres = ({ genres }) => {
+export const Genres = () => {
+  const { data } = useContext(ContextDetails);
+  const { genres } = data;
   return (
     <>
       {genres && (
@@ -9,7 +12,7 @@ export const Genres = ({ genres }) => {
           <h3 className="text-lg font-semibold">Genres</h3>
           <div className="flex gap-3">
             {genres.map((genre) => (
-              <Link to={`/genres/${genre.slug}`}>
+              <Link to={`/genres/${genre.slug}`} key={genre.id}>
                 <span className="hover:underline">{genre.name}</span>
               </Link>
             ))}

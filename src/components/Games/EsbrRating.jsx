@@ -1,15 +1,17 @@
-import React from "react";
+import React, { useContext } from "react";
 import { esbrRating } from "../../helpers/esbrRating";
+import { ContextDetails } from "../../Context/contextDetails/ContextDetails";
 
-export const EsbrRating = ({ EsbrRating }) => {
+export const EsbrRating = () => {
+  const {data} = useContext(ContextDetails);
   return (
     <>
-      {EsbrRating && (
+      {data.esrb_rating && (
         <div>
           <div>
             <h3 className="text-lg font-semibold">Age rantings</h3>
             <span className="text-lg">
-              {esbrRating(EsbrRating.slug)} {EsbrRating.name}
+              {esbrRating(data.esrb_rating.slug)} {data.esrb_rating.name}
             </span>
           </div>
         </div>

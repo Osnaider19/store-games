@@ -11,6 +11,7 @@ export const CardSearch = ({ games }) => {
         <Link
           to={`/games/${game.id}`}
           className="w-full rounded-lg overflow-hidden hover:bg-black/50"
+          key={game.id}
         >
           <div className="relative flex  gap-2 min-w-full ">
             <div className="">
@@ -26,9 +27,6 @@ export const CardSearch = ({ games }) => {
             </div>
             <div>
               <p>{game.name}</p>
-              <div className="text-sm">
-                <RatingStar rating={game.rating} />
-              </div>
               <span>{convertirFecha(game.released)}</span>
             </div>
           </div>

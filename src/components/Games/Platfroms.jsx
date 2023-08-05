@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import { BsPlaystation, BsNintendoSwitch, BsXbox } from "react-icons/bs";
 import { AiFillWindows, AiOutlineGlobal } from "react-icons/ai";
-export const Platfroms = ({ Platfroms }) => {
-  
+import { ContextDetails } from "../../Context/contextDetails/ContextDetails";
+export const Platfroms = () => {
+  const {data} = useContext(ContextDetails);
   const icon = (plataforms) => {
     switch (plataforms) {
       case "pc":
@@ -21,7 +22,7 @@ export const Platfroms = ({ Platfroms }) => {
   };
   return (
     <div className="flex gap-3 py-2">
-      {Platfroms?.map(({ platform }) => (
+      {data.parent_platforms?.map(({ platform }) => (
         <div key={platform.id}>
           <i className="text-2xl">{icon(platform.slug)}</i>
         </div>
