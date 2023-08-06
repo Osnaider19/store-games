@@ -1,14 +1,20 @@
 import React from "react";
 import { SliderCapture } from "../SliderGames/SliderCapture";
-import { Star } from "../SliderGames/Star";
 import { convertirFecha } from "../../helpers/convertirFecha";
 import { GenresGames } from "../SliderGames/GenresGames";
 import { Link } from "react-router-dom";
 import { HiStar } from "react-icons/hi";
-export const Card = ({ capture, name, id, genres, date, rating }) => {
+export const Card = ({ img, name, id, genres, date, rating }) => {
   return (
-    <div className="pb-7 border rounded-lg">
-      <SliderCapture capture={capture} />
+    <div className="pb-7 ">
+      <div>
+        <img
+          src={img.replace("media/", `media/resize/420/-/`)}
+          alt=""
+          loading="lazy"
+          className="w-full h-full min-h-[205px] max-h-[205px] min-w-[311px]  object-cover"
+        />
+      </div>
       <div className="px-2">
         <div>
           <Link to={`/games/${id}`} className="font-semibold hover:opacity-80">
