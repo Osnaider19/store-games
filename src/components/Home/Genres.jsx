@@ -7,9 +7,9 @@ export const Genres = () => {
   const { data } = useFetch(`https://api.rawg.io/api/genres?key=${API_KEY}`);
   console.log(data);
   return (
-    <div className="relative z-50">
+    <div className="relative z-50 bg-[#121212]">
       <div className="px-8">
-        <h2 className="text-4xl font-semibold ">All genres</h2>
+        <h2 className="text-4xl font-semibold ">Genres</h2>
         <ul className="flex flex-wrap gap-4 py-5">
           {data?.results.map((genre) => (
             <li className="w-full max-w-[200px] h-[115px]" key={genre.id} >

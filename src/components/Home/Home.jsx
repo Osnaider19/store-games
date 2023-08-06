@@ -1,14 +1,15 @@
-import React from 'react'
-import { Slider } from '../Slider/Slider'
-import { SliderGames } from '../SliderGames/SliderGames'
-import { Genres } from './Genres'
+import React from "react";
+
+import { Games } from "./GamesHome/Games";
+import { Genres } from "./Genres";
+import { Slider } from "./Slider/Slider";
 
 export const Home = () => {
   return (
-    <div>
-        <Slider/>
-        <SliderGames/>
-        <Genres/>
-    </div>
-  )
-}
+    <>
+      <Slider />
+      <Games />
+      <Genres />
+    </>
+  );
+};
