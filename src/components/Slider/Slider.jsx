@@ -3,46 +3,41 @@ import { useFetch } from "../../hooks/useFech";
 import { Genres } from "./Genres";
 import { RatingStar } from "./RatingStar";
 import { FechaUpdateLaunch } from "./FechaUpdateLaunch";
-import { SliderScreenshots } from "./SliderScreenshots";
-
+import { API_KEY, URL } from "../../config/config";
+import { BackgroundHome } from "./BackgroundHome";
+import { Platforms } from "./Platforms";
 export function Slider() {
-  const API_KEY = import.meta.env.VITE_API_KEY;
-  const { data } = useFetch(`https://api.rawg.io/api/games?key=${API_KEY}`);
+  const { data } = useFetch(`${URL}/games?key=${API_KEY}`);
   return (
     <>
       {console.log(data)}
-
       <div className="relative top-[60px] h-screen w-full flex overflow-hidden ">
-        <div
-          className="fixed left-0 pointer-events-none top-0 h-screen w-full 
-        bg-[#00000099]"
-        ></div>
-        {data?.results.slice(1, 5).map((game) => (
-          <div key={game.id} className="min-w-full ">
-            <div
-              style={{
-                background: `url(${game.background_image})`,
-                backgroundPosition: "top left ",
-                backgroundSize: "cover",
-              }}
-              className="w-full h-screen"
-            >
+        {data?.results.slice(1, 2).map((game) => (
+          <>
+            <BackgroundHome background={game.background_image} />
+            <div key={game.id} className="min-w-full ">
               <div className="flex">
-              <div className="relative pt-20 w-[90%] h-full m-auto z-30 ">
-                <p className="text-4xl font-semibold">{game.name}</p>
-                <FechaUpdateLaunch
-                  released={game.released}
-                  updated={game.updated}
-                />
-                <RatingStar rating={game.rating} votes={game.ratings_count} />
-                <Genres genres={game.genres} />
-              </div>
-              </div>
-              <div>
-                <SliderScreenshots images={game.short_screenshots}/>
+                <div className="relative pt-10 w-[90%] h-full m-auto z-30 ">
+                  <p className="text-4xl font-semibold text-white">
+                    {game.name}
+                  </p>
+                  <FechaUpdateLaunch released={game.released} />
+                  <div className="text-xl">
+                    <RatingStar
+                      rating={game.rating}
+                      votes={game.ratings_count}
+                    />
+                  </div>
+                  <Genres genres={game.genres} />
+                  <Platforms platforms={game.parent_platforms} />
+                  <div>
+                    <h3>Metascore</h3>
+                    <div>{game.metacritic}</div>
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
+          </>
         ))}
       </div>
     </>
