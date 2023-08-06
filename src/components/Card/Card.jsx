@@ -1,7 +1,6 @@
 import React from "react";
-import { SliderCapture } from "../SliderGames/SliderCapture";
 import { convertirFecha } from "../../helpers/convertirFecha";
-import { GenresGames } from "../SliderGames/GenresGames";
+import { GenresGames } from "../Home/GamesHome/GenresGames";
 import { Link } from "react-router-dom";
 import { HiStar } from "react-icons/hi";
 export const Card = ({ img, name, id, genres, date, rating }) => {
