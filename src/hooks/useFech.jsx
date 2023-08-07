@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { API_KEY } from "../config/config";
 export const useFetch = (url) => {
   const [data, setData] = useState(null);
   const [isPending, setIsPending] = useState(true);
@@ -16,19 +15,15 @@ export const useFetch = (url) => {
             statusText: !res.statusText ? "Ocurrió un error" : res.statusText,
           };
         }
-
         const data = await res.json();
-
-        //console.log(data);
-        setIsPending(false);
         setData(data);
         setError({ err: false });
       } catch (err) {
-        setIsPending(true);
         setError(err);
+      } finally {
+        setIsPending(false);
       }
     };
-
     getData(url);
   }, [url]);
 
