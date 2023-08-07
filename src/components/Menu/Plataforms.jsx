@@ -5,11 +5,11 @@ export const Plataforms = () => {
   return (
     <div>
       <span className="block text-xl font-bold py-2 px-1">Platforms</span>
-      <ItemMenu link={`#`} name={`Xbox One`} icon={<BsXbox />} />
-      <ItemMenu link={`#`} name={`PlayStation`} icon={<BsPlaystation />} />
-      <ItemMenu link={`#`} name={`Pc`} icon={<BsWindows />} />
-      <ItemMenu link={`#`} name={`Android`} icon={<BsAndroid2 />} />
-      <ItemMenu link={`#`} name={`iOS`} icon={<AiFillApple />} />
+      <ItemMenu link={`/games/platforms/xbox-one`} name={`Xbox One`} icon={<BsXbox />} />
+      <ItemMenu link={`/games/platforms/27`} name={`PlayStation`} icon={<BsPlaystation />} />
+      <ItemMenu link={`/games/platforms/4`} name={`Pc`} icon={<BsWindows />} />
+      <ItemMenu link={`/games/platforms/21`} name={`Android`} icon={<BsAndroid2 />} />
+      <ItemMenu link={`/games/platforms/3`} name={`iOS`} icon={<AiFillApple />} />
     </div>
   );
 };

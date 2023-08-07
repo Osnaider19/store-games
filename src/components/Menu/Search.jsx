@@ -1,20 +1,31 @@
 import "./style-search.css";
-import { useState } from "react";
-import { useFetch } from "../../hooks/useFech";
-import { URL, API_KEY } from "../../config/config";
-import { CardSearch } from "./CardSearch";
-
+import { AiOutlineMenu } from "react-icons/ai";
+import { Results } from "../Search/Results";
+import { useContext } from "react";
+import { ContextSearch } from "../../Context/ContextSearch/ContextSearch";
 export const Search = () => {
-  const [input, setInput] = useState("");
+  const { input, setIsPending, setInput } = useContext(ContextSearch);
 
-  const { data, isPending, setIsPending } = useFetch(
-    `${URL}/games?search=${input}&key=${API_KEY}`
-  );
-
+  function handelvisiblemenu(e) {
+    const menu = document.querySelector(".menu__container");
+    const layout = document.querySelector(".layout");
+    layout.classList.toggle("layout-visible");
+    menu.classList.toggle("menu-visible");
+  }
   return (
     <>
-      {console.log(data)}
       <div className="header">
+        <div className="absolute left-5  top-0 flex justify-center items-center h-full py-2 ">
+          <button
+            onClick={(e) => {
+              handelvisiblemenu();
+            }}
+          >
+            <i className="text-4xl ">
+              <AiOutlineMenu />
+            </i>
+          </button>
+        </div>
         <div className="container-search">
           <input
             type="text"
@@ -25,29 +36,7 @@ export const Search = () => {
               setIsPending(true);
             }}
           />
-          {input && (
-            <>
-              <div
-                className="fixed left-0 top-0 w-full h-full -z-10 "
-                onClick={() => {
-                  setInput("");
-                }}
-              ></div>
-              <div className="content__results">
-                <div className="content__results__search">
-                  <div className="relative w-full h-full flex flex-wrap  px-3 py-3 gap-1">
-                    {data.results.length !== 0 ? (
-                      <CardSearch games={data.results} setInput={setInput}/>
-                    ) : (
-                      <div className="pt-10 w-full">
-                        <p className="text-3xl text-center">Sin resultados</p>
-                      </div>
-                    )}
-                  </div>
-                </div>
-              </div>
-            </>
-          )}
+          {input && <Results />}
         </div>
       </div>
     </>
