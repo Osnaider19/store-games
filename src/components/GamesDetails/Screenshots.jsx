@@ -1,84 +1,44 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useFetch } from "../../hooks/useFech";
 import { URL, API_KEY } from "../../config/config";
 import { useRef } from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
-import "./styles.css";
-import { Autoplay, Pagination, Navigation } from "swiper/modules";
-
-export const Screenshots = ({ id }) => {
+import { ModalScreenshots } from "../Modals/ModalScreenshots";
+import { useState } from "react";
+import { ContextScreen } from "../../Context/ContextScreen/ContextScreen";
+export const Screenshots = () => {
   const progressCircle = useRef(null);
   const progressContent = useRef(null);
   const onAutoplayTimeLeft = (s, time, progress) => {
     progressCircle.current.style.setProperty("--progress", 1 - progress);
     progressContent.current.textContent = `${Math.ceil(time / 1000)}s`;
   };
-  const { data, error } = useFetch(
-    `${URL}/games/${id}/screenshots?key=${API_KEY}`
-  );
+  const { data, error, stateModal, setStateModal, filter, handleImageClick } =
+    useContext(ContextScreen);
 
   return (
     <>
       {console.log(data)}
       {data && (
         <div className="relative">
-          <div className="flex flex-wrap gap-2 justify-center items-center">
+          <div className="flex flex-wrap gap-3 justify-center items-center">
             {data.results.map((img) => (
               <div key={img.id} className="max-w-[210px] w-full">
                 <div className="max-w-[210px] w-full">
                   <img
                     src={img.image.replace("media/", "media/resize/200/-/")}
                     alt=""
-                    className="object-cover w-full h-full"
+                    className="object-cover w-full h-full cursor-pointer hover:scale-105 transition-transform duration-200"
+                    onClick={() => handleImageClick(img.id)}
                   />
                 </div>
               </div>
             ))}
           </div>
-          {/* <div className="w-full  m-auto overflow-hidden rounded-xl">
-            <Swiper
-              spaceBetween={30}
-              centeredSlides={true}
-              autoplay={{
-                delay: 5000,
-                disableOnInteraction: false,
-              }}
-              pagination={{
-                clickable: true,
-              }}
-              modules={[Autoplay, Pagination, Navigation]}
-              onAutoplayTimeLeft={onAutoplayTimeLeft}
-              className="mySwiper"
-            >
-              {data.results.map((img) => (
-                <SwiperSlide key={img.id}>
-                  <div>
-                    <img
-                      src={img.image.replace("media/", "media/resize/1280/-/")}
-                      alt=""
-                      className="object-cover w-full h-full"
-                    />
-                  </div>
-                </SwiperSlide>
-              ))}
-
-              <div className="autoplay-progress" slot="container-end">
-                <svg viewBox="0 0 48 48" ref={progressCircle}>
-                  <circle cx="24" cy="24" r="20"></circle>
-                </svg>
-                <span ref={progressContent}></span>
-              </div>
-            </Swiper>
-          </div> */}
         </div>
       )}
     </>
   );
 };
-
-export default function App() {
-  return <></>;
-}
