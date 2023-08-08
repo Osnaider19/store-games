@@ -9,7 +9,7 @@ export const Genres = () => {
     <>
       {genres && (
         <div>
-          <h3 className="text-lg font-semibold">Genres</h3>
+          <h3 className="text-lg">Genres</h3>
           <div className="flex gap-3">
             {genres.map((genre) => (
               <Link to={`/genres/${genre.slug}`} key={genre.id}>

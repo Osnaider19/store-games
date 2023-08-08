@@ -1,30 +1,15 @@
 import React, { useContext } from "react";
-import { BsPlaystation, BsNintendoSwitch, BsXbox } from "react-icons/bs";
-import { AiFillWindows, AiOutlineGlobal } from "react-icons/ai";
+
 import { ContextDetails } from "../../Context/contextDetails/ContextDetails";
+import { platfromsIcon } from "../../helpers/platfroms";
 export const Platfroms = () => {
-  const {data} = useContext(ContextDetails);
-  const icon = (plataforms) => {
-    switch (plataforms) {
-      case "pc":
-        return <AiFillWindows />;
-      case "playstation":
-        return <BsPlaystation />;
-      case "nintendo":
-        return <BsNintendoSwitch />;
-      case "xbox":
-        return <BsXbox />;
-      case "web":
-        return <AiOutlineGlobal />;
-      case "undefined":
-        return;
-    }
-  };
+  const { data } = useContext(ContextDetails);
+
   return (
-    <div className="flex gap-3 py-2">
+    <div className="flex gap-3 py-4">
       {data.parent_platforms?.map(({ platform }) => (
         <div key={platform.id}>
-          <i className="text-2xl">{icon(platform.slug)}</i>
+          <i className="text-2xl">{platfromsIcon(platform.slug)}</i>
         </div>
       ))}
     </div>

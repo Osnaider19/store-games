@@ -5,7 +5,7 @@ export const Developers = () => {
   const { data } = useContext(ContextDetails);
   return (
     <div>
-      <p className="text-lg font-semibold">Developers</p>
+      <p className="text-lg">Developers</p>
       {data.developers?.map((developer) => (
         <div key={developer.id}>
           <p>{developer.name}</p>

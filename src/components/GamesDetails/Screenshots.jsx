@@ -16,15 +16,29 @@ export const Screenshots = ({ id }) => {
     progressCircle.current.style.setProperty("--progress", 1 - progress);
     progressContent.current.textContent = `${Math.ceil(time / 1000)}s`;
   };
-  const { data, error, isPending } = useFetch(
+  const { data, error } = useFetch(
     `${URL}/games/${id}/screenshots?key=${API_KEY}`
   );
 
   return (
     <>
+      {console.log(data)}
       {data && (
         <div className="relative">
-          <div className="w-full  m-auto overflow-hidden rounded-xl">
+          <div className="flex flex-wrap gap-2 justify-center items-center">
+            {data.results.map((img) => (
+              <div key={img.id} className="max-w-[210px] w-full">
+                <div className="max-w-[210px] w-full">
+                  <img
+                    src={img.image.replace("media/", "media/resize/200/-/")}
+                    alt=""
+                    className="object-cover w-full h-full"
+                  />
+                </div>
+              </div>
+            ))}
+          </div>
+          {/* <div className="w-full  m-auto overflow-hidden rounded-xl">
             <Swiper
               spaceBetween={30}
               centeredSlides={true}
@@ -58,7 +72,7 @@ export const Screenshots = ({ id }) => {
                 <span ref={progressContent}></span>
               </div>
             </Swiper>
-          </div>
+          </div> */}
         </div>
       )}
     </>

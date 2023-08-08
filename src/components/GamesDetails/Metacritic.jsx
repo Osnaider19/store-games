@@ -7,7 +7,7 @@ export const Metacritic = () => {
     <>
       {data.metacritic && (
         <div>
-          <p className="text-lg font-semibold">Metascore</p>
+          <p className="text-lg">Metascore</p>
           <div className="py-1 flex flex-col justify-center items-start">
             <span
               className={`text-xl py-1 px-1 border-2 rounded-lg

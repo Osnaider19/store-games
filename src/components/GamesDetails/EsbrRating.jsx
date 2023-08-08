@@ -9,7 +9,7 @@ export const EsbrRating = () => {
       {data.esrb_rating && (
         <div>
           <div>
-            <h3 className="text-lg font-semibold">Age rantings</h3>
+            <h3 className="text-lg">Age rantings</h3>
             <span className="text-lg">
               {esbrRating(data.esrb_rating.slug)} {data.esrb_rating.name}
             </span>
