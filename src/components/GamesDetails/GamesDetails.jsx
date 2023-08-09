@@ -3,7 +3,7 @@ import { Background } from "./Background";
 import { About } from "./About";
 import { Screenshots } from "./Screenshots";
 import { Ratings } from "./Ratings";
-import { Platfroms } from "./Platfroms";
+import { ParentPlatfroms } from "./ParentPlatfroms";
 import { Developers } from "./Developers";
 import { Publisher } from "./Publisher";
 import { EsbrRating } from "./EsbrRating";
@@ -14,6 +14,9 @@ import { Title } from "./Title";
 import { Loader } from "../Loader/Loader";
 import { ModalScreenshots } from "../Modals/ModalScreenshots";
 import { ContextScreen } from "../../Context/ContextScreen/ContextScreen";
+import { ShoppingStore } from "./ShoppingStore";
+import { Platfroms } from "./Platfroms";
+import { Tags } from "./Tags";
 export const GamesDetails = () => {
   const { data, isPending } = useContext(ContextDetails);
   const { stateModal } = useContext(ContextScreen);
@@ -31,7 +34,7 @@ export const GamesDetails = () => {
                   <div className="flex flex-col w-[70%]">
                     <Title />
                     <Ratings />
-                    <Platfroms />
+                    <ParentPlatfroms />
                     <Genres />
                     <div className="flex gap-6 items-start py-4">
                       <Metacritic />
@@ -41,22 +44,34 @@ export const GamesDetails = () => {
                     <EsbrRating />
                   </div>
                 </div>
-                <div className="flex gap-3 justify-center items-center px-7 bg-[#181818] mt-10 ">
+                <div className="flex gap-3 justify-center items-start px-7 bg-[#181818] mt-10 py-5">
                   <div className="w-[50%]">
                     <About about={data.description} />
                   </div>
-                  <div className="w-[50%]">
-                    
+                  <div className="w-[50%] px-5">
+                    <ShoppingStore />
+                    <Tags />
+                    <div className="pt-3">
+                      <p className="">Website</p>
+                      <a href={data.website} target="_blank">
+                        {data.website}
+                      </a>
+                    </div>
                   </div>
                 </div>
-                <div className="w-full py-7 bg-[#181818] ">
-                <Screenshots id={data.id} />
+                <div className="relative w-full flex justify-start py-7 bg-[#181818] px-8">
+                  <div className="w-[50%]">
+                    <Screenshots id={data.id} />
+                  </div>
+                  <div className="w-[50%]">
+                    <Platfroms />
+                  </div>
                 </div>
                 {/* <Achievements /> */}
               </div>
             </div>
-          {stateModal && <ModalScreenshots />}
-          {console.log(stateModal)}
+            {stateModal && <ModalScreenshots />}
+            {console.log(stateModal)}
           </div>
         </>
       )}
