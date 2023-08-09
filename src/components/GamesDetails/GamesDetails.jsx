@@ -46,10 +46,12 @@ export const GamesDetails = () => {
                     <About about={data.description} />
                   </div>
                   <div className="w-[50%]">
-                    <Screenshots id={data.id} />
+                    
                   </div>
                 </div>
-                <div className="w-full px-7 py-7"></div>
+                <div className="w-full py-7 bg-[#181818] ">
+                <Screenshots id={data.id} />
+                </div>
                 {/* <Achievements /> */}
               </div>
             </div>

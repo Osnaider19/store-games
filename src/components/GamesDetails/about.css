@@ -1,0 +1,46 @@
+
+.title__about{
+  font-size: 2.25rem;
+  font-weight: 900;
+  
+}
+ .container__text__about{
+    max-height: 13rem; /* Ajusta esta altura según el número de líneas que desees mostrar */
+    overflow: hidden;
+    position: relative;
+    padding: 1rem 0;
+    
+ }
+.container__text__about p {
+    padding-bottom: .5rem;
+}
+
+.container__text__about h3{
+    font-weight: 900;
+    font-size:  1.875rem;
+    line-height: 2.25rem;
+    padding: .5rem 0;
+}
+.container__read__more{
+    display: block;
+}
+.read__more{
+    display: flex;
+    margin-top: .7rem;
+    background-color: rgba(68, 68, 68, 0.5);
+    padding: .2rem 1rem;
+    font-weight: 500;
+    border-radius: 3px;
+    cursor: pointer;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    z-index: 80;
+    transition: background .3s ;
+}
+.read__more:hover{
+    background-color: rgba(68, 68, 68, 0.9);
+}
+.expanded {
+    max-height: none;
+  }
