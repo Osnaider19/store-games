@@ -5,13 +5,21 @@ function Top() {
   return (
     <div>
       <span className="block text-xl font-bold py-2 px-1">Top</span>
-      <ItemMenu icon={<BiBarChartAlt2 />} link={`/pop`} name={"Popular in 2022"} />
       <ItemMenu
         icon={<BiBarChartAlt2 />}
-        link={`/best`}
+        link={`/discover/last-30-days`}
+        name={"Last 30 days"}
+      />
+      <ItemMenu
+        icon={<BiBarChartAlt2 />}
+        link={`/discover/best`}
         name={"Best of the years"}
       />
-      <ItemMenu icon={<BiBarChartAlt2 />} link={`/top`} name={"All tim top 250"} />
+      <ItemMenu
+        icon={<BiBarChartAlt2 />}
+        link={`/discover/top`}
+        name={"All tim top 250"}
+      />
     </div>
   );
 }

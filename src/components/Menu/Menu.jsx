@@ -7,7 +7,7 @@ import Top from "./Top";
 import { Genres } from "./Genres";
 import "./index.css";
 import { Logo } from "./Logo";
-import { Search } from "./Search";
+import { Search } from "../Search/Search";
 export const Menu = () => {
   return (
     <>
