@@ -1,5 +1,5 @@
 import React from "react";
-import { CardSearch } from "../Menu/CardSearch";
+import { CardSearch } from "./CardSearch";
 import { useContext } from "react";
 import { ContextSearch } from "../../Context/ContextSearch/ContextSearch";
 export const Results = () => {
@@ -16,7 +16,7 @@ export const Results = () => {
       <div className="content__results">
         <div className="content__results__search">
           <div className="relative w-full h-full flex flex-wrap  px-3 py-3 gap-1">
-            {data.results.length !== 0 ? (
+            {data?.results?.length !== 0 ? (
               <CardSearch games={data.results} setInput={setInput} />
             ) : (
               <div className="pt-10 w-full">
