@@ -71,3 +71,18 @@
       box-shadow: .2em -.2em 0 0 currentcolor;
     }
   }
+
+  .loader-animation{
+    animation: Loader .7s infinite alternate;
+  }
+  @keyframes Loader {
+    0%{
+     background-color: #494a4b;
+    }
+    50%{
+      background-color: #2b2828;
+    }
+    100%{
+      background-color: #312e2e;
+    }
+  }
