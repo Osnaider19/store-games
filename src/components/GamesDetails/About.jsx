@@ -1,17 +1,18 @@
-import React from "react";
+import React, { useRef } from "react";
 import "./about.css";
 export const About = ({ about }) => {
+  const buttonMo = useRef();
+  const contentText = useRef();
+  const contentGradiend = useRef();
   function extensText() {
-    const readMoreButton = document.querySelector(".read__more");
-    const textContainer = document.querySelector(".container__text__about");
-    readMoreButton.addEventListener("click", () => {
-      textContainer.classList.toggle("expanded");
-      if (textContainer.classList.contains("expanded")) {
-        readMoreButton.textContent = "show less";
-      } else {
-        readMoreButton.textContent = "read more";
-      }
-    });
+    contentText.current.classList.toggle("expanded");
+    if (contentText.current.classList.contains("expanded")) {
+      buttonMo.current.textContent = "show less";
+      contentGradiend.current.style.display = "none"
+    } else {
+      buttonMo.current.textContent = "read more";
+      contentGradiend.current.style.display = "block"
+    }
   }
   return (
     <div className="pb-10">
@@ -19,9 +20,11 @@ export const About = ({ about }) => {
       <div
         dangerouslySetInnerHTML={{ __html: about }}
         className="container__text__about"
+        ref={contentText}
       />
       <div className="container__read__more">
-        <span className="read__more" onClick={extensText}>
+      <div className="container__lineragradiend" ref={contentGradiend}></div>
+        <span className="read__more" onClick={extensText} ref={buttonMo}>
           read more
         </span>
       </div>
