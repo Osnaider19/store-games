@@ -8,7 +8,7 @@ export const ContextGamesProvider = ({ children }) => {
   const [error, setError] = useState(null);
   const [page, setPage] = useState(1);
   const [date, setDate] = useState("");
-
+  const [ordering, setOrdering] = useState("");
   const getData = async (url) => {
     try {
       const res = await fetch(url);
@@ -30,9 +30,9 @@ export const ContextGamesProvider = ({ children }) => {
   };
   useEffect(() => {
     getData(
-      `${URL}/games?key=${API_KEY}&dates=${date}&page=${page}&page_size=40`
+      `${URL}/games?key=${API_KEY}&dates=${date}&page=${page}&ordering=${ordering}`
     );
-  }, [page, date]);
+  }, [page, date , ordering]);
   return (
     <ContextGames.Provider
       value={{
@@ -44,6 +44,9 @@ export const ContextGamesProvider = ({ children }) => {
         date,
         page,
         error,
+        ordering,
+        setOrdering,
+        
       }}
     >
       {children}
