@@ -5,13 +5,13 @@ import { Link } from "react-router-dom";
 import { HiStar } from "react-icons/hi";
 export const Card = ({ img, name, id, genres, date, rating }) => {
   return (
-    <div className="pb-7 ">
+    <div className="relative pb-7 rounded-md  overflow-hidden">
       <div>
         <img
-          src={img.replace("media/", `media/resize/420/-/`)}
+          src={img?.replace("media/", `media/resize/420/-/`)}
           alt=""
           loading="lazy"
-          className="w-full h-full min-h-[205px] max-h-[205px] min-w-[311px]  object-cover"
+          className="w-full h-full min-h-[205px] max-h-[205px] min-w-full object-cover"
         />
       </div>
       <div className="px-2">
