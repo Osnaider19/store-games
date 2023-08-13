@@ -3,23 +3,17 @@ import { AiOutlineMenu } from "react-icons/ai";
 import { Results } from "./Results";
 import { useContext } from "react";
 import { ContextSearch } from "../../Context/ContextSearch/ContextSearch";
+import { handelvisiblemenu } from "../../helpers/menuVisible";
 export const Search = () => {
   const { input, setIsPending, setInput } = useContext(ContextSearch);
 
-  function handelvisiblemenu(e) {
-    const menu = document.querySelector(".menu__container");
-    const layout = document.querySelector(".layout");
-    layout.classList.toggle("layout-visible");
-    menu.classList.toggle("menu-visible");
-  }
+  
   return (
     <>
       <div className="header">
-        <div className="absolute left-5  top-0 flex justify-center items-center h-full py-2 ">
+        <div className="absolute left-5  top-0 flex justify-center items-center h-full py-2 z-50">
           <button
-            onClick={(e) => {
-              handelvisiblemenu();
-            }}
+            onClick={handelvisiblemenu}
           >
             <i className="text-4xl ">
               <AiOutlineMenu />
