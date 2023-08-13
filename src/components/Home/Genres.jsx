@@ -1,18 +1,18 @@
 import React from "react";
 import { useFetch } from "../../hooks/useFech";
-import { API_KEY } from "../../config/config";
+import { API_KEY, URL } from "../../config/config";
 import { Link } from "react-router-dom";
 
 export const Genres = () => {
-  const { data } = useFetch(`https://api.rawg.io/api/genres?key=${API_KEY}`);
+  const { data } = useFetch(`${URL}/genres?key=${API_KEY}`);
   console.log(data);
   return (
     <div className="relative z-50 bg-[#121212]">
-      <div className="px-8">
+      <div className="px-4 md:px-8">
         <h2 className="text-4xl font-semibold ">Genres</h2>
-        <ul className="flex flex-wrap gap-4 py-5">
+        <ul className="flex flex-wrap gap-1 md:gap-4 py-5 justify-between">
           {data?.results.map((genre) => (
-            <li className="w-full max-w-[200px] h-[115px]" key={genre.id} >
+            <li className="w-full max-w-[170px] h-[115px] md:max-w-[200px] mb-2 md:mb-0" key={genre.id} >
               <Link to={`/genres/${genre.slug}`}>
                 <div className="relative w-full max-w-[200px] h-[115px] hover:scale-110 transition-transform duration-300">
                   <img
