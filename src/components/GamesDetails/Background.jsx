@@ -7,15 +7,15 @@ export const Background = () => {
     <>
       <div
         style={{
-          backgroundImage: `url(${data.background_image.replace(
+          backgroundImage: `url(${data.background_image?.replace(
             "media/games/",
             "media/resize/1280/-/games/"
           )})`,
-          backgroundPosition: "top , center ",
+          backgroundPosition: "center , center ",
           backgroundSize: "cover",
           backgroundRepeat: "no-repeat",
         }}
-        className="absolute  left-0  w-full h-[90vh]"
+        className="absolute  left-0  w-full h-screen"
       ></div>
       <div
         className="absolute left-0 top-0 w-full h-[100vh] z-20"

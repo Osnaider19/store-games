@@ -9,10 +9,10 @@ export const Ratings = () => {
       <div className="relative   py-2  rounded-xl flex items-center ">
         <p className="flex">{data.ratings_count} Rantings</p>
       </div>
-      <div className="flex gap-2 items-center flex-wrap pb-2">
+      <div className="flex gap-2 items-center flex-wrap pb-2 ">
         {data.ratings?.map((rating) => (
           <div
-            className={`flex items-center gap-2 flex-nowrap py-1  px-2 rounded-lg capitalize  cursor-pointer ${RatingColor(
+            className={`flex items-center gap-2 flex-nowrap py-1  px-2 rounded-lg capitalize   ${RatingColor(
               rating.title
             )}`}
             key={rating.id}

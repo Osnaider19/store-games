@@ -9,15 +9,15 @@ export const Series = () => {
   return (
     <>
       {data?.results?.length !== 0 && (
-        <div className="relative w-full h-full px-8">
+        <div className="relative w-full h-full">
           <div>
-            <h4 className="text-3xl py-4 font-semibold capitalize">
-              games belonging to the same series
+            <h4 className="text-xl md:text-3xl py-4 font-semibold capitalize">
+            games of the same series
             </h4>
-            <ul className="flex flex-wrap w-full gap-3 justify-between ">
+            <ul className="flex flex-wrap w-full gap-1 md:gap-3 justify-between ">
               {data?.results?.map((game) => (
                 <li
-                  className="relative  max-w-[250px] h-full min-w-[250px]  overflow-hidden hover:-translate-y-3 transition-transform duration-200"
+                  className="relative w-full max-w-[170px]  md:max-w-[250px] h-full md:min-w-[250px] overflow-hidden hover:-translate-y-3 transition-transform duration-200"
                   key={game.id}
                 >
                   <Card

@@ -10,10 +10,11 @@ export const Metacritic = () => {
           <p className="text-lg">Metascore</p>
           <div className="py-1 flex flex-col justify-center items-start">
             <span
-              className={`text-xl py-1 px-1 border-2 rounded-lg
-            text-${ScoreColor(data.metacritic)}
-            border-${ScoreColor(data.metacritic)}
-            `}
+              className={`text-xl py-1 px-1 border-2 rounded-lg font-semibold`}
+              style={{
+                color: `${ScoreColor(data.metacritic)}`,
+                border: `2px solid ${ScoreColor(data.metacritic)}`,
+              }}
             >
               {data.metacritic}
             </span>

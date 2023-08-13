@@ -4,7 +4,7 @@ import { ContextDetails } from "../../Context/contextDetails/ContextDetails";
 export const Requirements = () => {
   const { data } = useContext(ContextDetails);
   return (
-    <div className="relative flex justify-start items-center px-8 w-full py-4">
+    <div className="relative flex justify-start items-center  w-full lg:w-[50%] py-4">
       {console.log(data)}
       <div>
         {data.platforms?.map((plat) => (
