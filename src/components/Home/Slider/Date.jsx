@@ -6,7 +6,7 @@ export const Date = ({ released }) => {
     <>
       <div className="relative w-full">
         <div className="pt-3 ">
-          <p className="text-xl py-2"> {convertirFecha(released)}</p>
+          <p className="text-lg md:text-xl py-2"> {convertirFecha(released)}</p>
         </div>
       </div>
     </>

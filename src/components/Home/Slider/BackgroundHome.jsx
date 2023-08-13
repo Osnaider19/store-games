@@ -6,13 +6,14 @@ export const BackgroundHome = ({ background }) => {
       <div
         style={{
           background: `url(${background.replace("media/", `media/resize/1280/-/`)})`,
-          backgroundPosition: "top left ",
+          backgroundPosition: "center , center ",
           backgroundSize: "cover",
+          backgroundRepeat: "no-repeat",
         }}
         className="w-full h-full absolute left-0 top-0 "
       >
         <div
-          className="fixed left-0 pointer-events-none top-0 h-screen w-full 
+          className="absolute left-0 pointer-events-none top-0 h-screen w-full 
         bg-black/10"
         ></div>
          <div
