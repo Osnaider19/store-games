@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { NavLink as NavLinkRR } from "react-router-dom";
+import { handelvisiblemenu } from "../../helpers/menuVisible";
 export const ItemMenu = ({ link, name, icon }) => {
   const NavLink = ({ to, children, onClick, ...props }) => {
     return (
@@ -16,8 +17,8 @@ export const ItemMenu = ({ link, name, icon }) => {
   }
   return (
     <NavLink to={link}>
-      <li className="flex items-center py-3 hover:bg-[#332e2e] rounded-md">
-        <i className="px-2">{icon}</i>
+      <li className="flex items-center py-3 hover:bg-[#332e2e] rounded-md " onClick={handelvisiblemenu}>
+        <i className="px-3  py-1 text-xl">{icon}</i>
         <div>
           <span className="text-lg">{name}</span>
         </div>
