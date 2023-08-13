@@ -2,7 +2,7 @@ import React from "react";
 import { ItemMenu } from "./ItemMenu";
 import { ImHome } from "react-icons/im";
 import { FaGamepad } from "react-icons/fa";
-import { Plataforms } from "./Plataforms";
+import { Platforms } from "./Platforms";
 import Top from "./Top";
 import { Genres } from "./Genres";
 import "./index.css";
@@ -18,7 +18,7 @@ export const Menu = () => {
           <ul className="pb-10">
             <ItemMenu link={`/`} name={`Home`} icon={<ImHome />} />
             <ItemMenu link={`/games`} name={`All Games`} icon={<FaGamepad />} />
-            <Plataforms />
+            <Platforms />
             <Top />
             <Genres />
           </ul>
