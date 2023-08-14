@@ -5,8 +5,11 @@ import { useContext, useEffect } from "react";
 import { HeaderFilters } from "./HeaderFilters";
 import { NoResults } from "./NoResults";
 import { Error } from "../Errors/Error";
+import { Footer } from "../Footer/Footer";
+import { Pagination } from "../Pagination/Pagination";
 export const Games = () => {
-  const { data, isPending, page, setPage , error} = useContext(ContextGames);
+  const { data, dataGames, isPending, setIsPending, page, setPage, error } =
+    useContext(ContextGames);
   useEffect(() => {
     scrollTo(0, 0);
   }, [page]);
@@ -14,14 +17,15 @@ export const Games = () => {
     <>
       <div className="px-4 py-4">
         {console.log(data)}
+        {console.log(dataGames)}
         <HeaderFilters />
         {isPending && <Loader />}
         {data?.results?.length <= 0 && <NoResults />}
-        {error && <Error status={error.status} statusText={error.statusText}/>}
-        <div className="flex flex-wrap justify-between gap-3">
+        {error && <Error status={error.status} statusText={error.statusText} />}
+        <div className="flex flex-wrap justify-center gap-3 sm:justify-between">
           {data?.results?.map((game) => (
             <div
-              className="relative  max-w-[250px] h-full min-w-[250px]  overflow-hidden hover:-translate-y-3 transition-transform duration-200"
+              className="relative w-full max-w-[170px]  md:max-w-[250px] h-full md:min-w-[250px] overflow-hidden hover:-translate-y-3 transition-transform duration-200"
               key={game.id}
             >
               <Card
@@ -35,18 +39,14 @@ export const Games = () => {
             </div>
           ))}
         </div>
-        <div className="flex justify-center items-center py-5">
-          {data?.next && (
-            <button
-              className="py-3 px-5 bg-red-600"
-              onClick={() => {
-                setPage(page + 1);
-              }}
-            >
-              ver mas
-            </button>
-          )}
-        </div>
+        <Pagination
+          next={data?.next}
+          previous={data?.previous}
+          page={page}
+          setIsPending={setIsPending}
+          setPage={setPage}
+        />
+        <Footer />
       </div>
     </>
   );

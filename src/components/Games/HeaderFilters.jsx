@@ -5,28 +5,34 @@ import { ContextGames } from "../../Context/ContextGames/ContextGames";
 import { ordering } from "./filterOrdering";
 export const HeaderFilters = () => {
   const { data } = useFetch(`${URL}/games?key=${API_KEY}`);
-  const { setDate, setOrdering, setIsPending } = useContext(ContextGames);
-
+  const { setDate, setOrdering, setIsPending, setPage } =
+    useContext(ContextGames);
+  const onChangeSelectDate = (e) => {
+    setDate(e.target.value), setIsPending(true), setPage(1);
+  };
+  const onChangeSelectOrdering = (e) => {
+    setOrdering(e.target.value), setIsPending(true), setPage(1);
+  };
   return (
-    <div className="flex justify-between items-center ">
-      <h1 className="text-6xl font-semibold py-4">All games </h1>
-      <div className="py-4 ">
-        <div className="flex gap-7 px-3">
+    <div className="flex justify-between items-center flex-wrap  py-2">
+      <h1 className="text-4xl w-full font-semibold py-4 sm:w-auto  md:text-6xl">
+        All games{" "}
+      </h1>
+      <div className="py-4 flex  relative w-full sm:w-auto ">
+        <div className="flex w-full flex-col items-center  gap-2 sm:flex-row sm:w-auto md:px-5">
           <select
             name="filters__date"
-            onChange={(e) => {
-              setDate(e.target.value), setIsPending(true);
-            }}
+            onChange={(e) => onChangeSelectDate(e)}
             id="countries"
-            className="bg-[#121212] border text-white text-lg rounded-lg focus:ring-yellow-400 focus:border-yellow-400 selection:border-yellow-400  block w-full p-2.5 cursor-pointer"
+            className="bg-[#121212] border border-[#ffffff50] text-white text-lg rounded-lg block w-full py-1 cursor-pointer md:w-[200px]"
           >
-            <option >Release date</option>
+            <option>Release date</option>
             {data?.filters?.years?.map((year) => (
               <option
                 key={year.count}
                 name="filters__date"
                 value={year.filter}
-                className="px-2 cursor-pointer hover:bg-yellow-400"
+                className="py-2 hover:bg-slate-900"
               >
                 {year.decade} - {year.to}
               </option>
@@ -34,11 +40,9 @@ export const HeaderFilters = () => {
           </select>
           <select
             name="filters__ordering"
-            onChange={(e) => {
-              setOrdering(e.target.value), setIsPending(true);
-            }}
+            onChange={(e) => onChangeSelectOrdering(e)}
             id="filters__ordering"
-            className="bg-[#121212] border text-white text-lg rounded-lg focus:ring-yellow-400 focus:border-yellow-400 selection:border-yellow-400  block w-full p-2.5 cursor-pointer px-3"
+            className="bg-[#121212] border border-[#ffffff50] text-white text-lg rounded-lg block w-full py-1 cursor-pointer md:w-[200px]"
           >
             <option value="" id="filters__ordering" name="filters__ordering">
               Order by popularity
