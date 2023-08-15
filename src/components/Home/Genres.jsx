@@ -7,7 +7,7 @@ export const Genres = () => {
   const { data } = useFetch(`${URL}/genres?key=${API_KEY}`);
   console.log(data);
   return (
-    <div className="relative z-50 bg-[#121212]">
+    <div className="relative z-10 bg-[#121212]">
       <div className="px-4 md:px-8">
         <h2 className="text-4xl font-semibold ">Genres</h2>
         <ul className="flex flex-wrap gap-1 md:gap-4 py-5 justify-between">
