@@ -6,20 +6,25 @@ import { HiStar } from "react-icons/hi";
 export const Card = ({ img, name, id, genres, date, rating }) => {
   return (
     <div className="relative pb-7 rounded-md  overflow-hidden">
-      <div>
-        <img
-          src={img?.replace("media/", `media/resize/420/-/`)}
-          alt=""
-          loading="lazy"
-          className="w-full h-full min-h-[205px] max-h-[205px] min-w-full object-cover"
-        />
-      </div>
-      <div className="px-2">
+      <Link to={`/games/${id}`} className="">
         <div>
-          <Link to={`/games/${id}`} className="font-semibold hover:opacity-80">
-            <p className="text-xl py-1">{name}</p>
-          </Link>
+          <img
+            src={
+              img
+                ? img?.replace("media/", `media/resize/420/-/`)
+                : "../../nocargimg.png"
+            }
+            alt={name}
+            loading="lazy"
+            className={`w-full h-full  min-h-[205px] max-h-[205px] min-w-full ${
+              img ? "object-cover" : "object-contain"
+            }`}
+          />
         </div>
+        <p className="text-xl px-2 py-1 font-semibold hover:opacity-80">{name}</p>
+      </Link>
+      <div className="px-2">
+        <div></div>
         <div className="flex items-center gap-2 pt-1">
           <i className="text-xl text-yellow-400">
             <HiStar />
