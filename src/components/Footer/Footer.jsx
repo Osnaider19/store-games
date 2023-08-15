@@ -4,24 +4,24 @@ import { ItemLink } from "./ItemLink";
 
 export const Footer = () => {
   return (
-    <div className="relative bg-[#121212]">
-      <div className="py-8 px-8">
+    <div className="relative">
+      <div className="py-8">
         <Redes />
         <ul className="flex justify-between flex-wrap py-4">
           <div>
-            <ItemLink link={`#`} text="Estudios de expeciencias de usuarios" />
-            <ItemLink link={`#`} text="Compañia" />
-            <ItemLink link={`#`} text="Servicios en línea" />
+            <ItemLink link={`#`} text="User experience studies" />
+            <ItemLink link={`#`} text="Company" />
+            <ItemLink link={`#`} text="Online services" />
           </div>
           <div>
-            <ItemLink link={`#`} text="Reglas de la comunidad" />
-            <ItemLink link={`#`} text="Empleo" />
-            <ItemLink link={`#`} text="Politicas de contenido de fans" />
+            <ItemLink link={`#`} text="community rules" />
+            <ItemLink link={`#`} text="Employment" />
+            <ItemLink link={`#`} text="Fan Content Policies" />
           </div>
           <div>
-            <ItemLink link={`#`} text="Soporte técnico" />
-            <ItemLink link={`#`} text="Estandares de la comunidad" />
-            <ItemLink link={`#`} text="Marca registrada" />
+            <ItemLink link={`#`} text="Technical support" />
+            <ItemLink link={`#`} text="community standards" />
+            <ItemLink link={`#`} text="registered trademark" />
           </div>
         </ul>
         
