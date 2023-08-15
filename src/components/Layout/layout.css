@@ -5,6 +5,8 @@
     transition: all .4s ;
     padding-left: 0 ;
   }
-  .layout-visible{
-    padding-left: 220px;
+  @media (min-width:900px){
+    .layout-visible{
+      padding-left: 220px;
+    }
   }
