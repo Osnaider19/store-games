@@ -7,9 +7,19 @@ import { NoResults } from "./NoResults";
 import { Error } from "../Errors/Error";
 import { Footer } from "../Footer/Footer";
 import { Pagination } from "../Pagination/Pagination";
+import { Filters } from "../Filters/Filter";
 export const Games = () => {
-  const { data, dataGames, isPending, setIsPending, page, setPage, error } =
-    useContext(ContextGames);
+  const {
+    data,
+    dataGames,
+    isPending,
+    setIsPending,
+    page,
+    setPage,
+    error,
+    setDate,
+    setOrdering,
+  } = useContext(ContextGames);
   useEffect(() => {
     scrollTo(0, 0);
   }, [page]);
@@ -18,7 +28,18 @@ export const Games = () => {
       <div className="px-4 py-4">
         {console.log(data)}
         {console.log(dataGames)}
-        <HeaderFilters />
+        <div className="flex flex-col justify-between sm:flex-row">
+          <h1 className="text-4xl w-full font-semibold py-4 sm:w-auto  md:text-6xl">
+            All games
+          </h1>
+          <Filters
+            setDate={setDate}
+            setIsPending={setIsPending}
+            setOrdering={setOrdering}
+            setPage={setPage}
+          />
+        </div>
+
         {isPending && <Loader />}
         {data?.results?.length <= 0 && <NoResults />}
         {error && <Error status={error.status} statusText={error.statusText} />}
