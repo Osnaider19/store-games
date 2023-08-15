@@ -1,12 +1,15 @@
 export const ScoreColor = (score) => {
   if (score > 10 && score <= 50) {
-    return "red-500";
+    console.log(score);
+    return "red";
   }
   if (score > 50 && score <= 85) {
-    return "yellow-500";
+    console.log(score);
+    return "yellow";
   }
-  if (score > 80) {
-    return "green-500";
+  if (score >= 85) {
+    console.log(score);
+    return "#10e210";
   } else {
     return;
   }

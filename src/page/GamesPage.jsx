@@ -1,13 +1,12 @@
 import React from "react";
-import { Layout } from "../components/Layout/Layout";
-import { Games } from "../components/Games/Games";
+import { GamesAll } from "../components/Games/GamesAll";
 
 export const GamesPage = () => {
   return (
-    <Layout>
+    <>
       <div className="pt-[60px]">
-        <Games />
+        <GamesAll />
       </div>
-    </Layout>
+    </>
   );
 };

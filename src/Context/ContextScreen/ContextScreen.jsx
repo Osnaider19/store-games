@@ -40,8 +40,8 @@ export const ContextScreenProvider = ({ children }) => {
     }
   };
   useEffect(() => {
-    getData(`${URL}/games/${id}/screenshots?key=${API_KEY}`);
-  }, []);
+    getData(`${URL}/games/${id}/screenshots?key=${API_KEY}&page_size=10`);
+  }, [id]);
   return (
     <ContextScreen.Provider
       value={{

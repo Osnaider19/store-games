@@ -1,4 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;700&display=swap');
+*{
+  max-width: 1360px;
+}
+
 body{
     background-color: #121212;
     color: white;
+    font-family: 'Lato', sans-serif;
+    margin: 0 auto;
+    overflow: hidden;
 }
+html{
+  margin: 0 auto;
+  overflow: hidden;
+  overflow-y: auto;
+}
+html::-webkit-scrollbar{
+    width: 10px;
+    background: rgba(255, 255, 255, .2);
+    transition: all .4s ;
+    border-radius: 100px;
+  }
+html::-webkit-scrollbar-thumb{
+      width: 7px;
+      background:#1f1c1c;
+      transition: all .4s ;
+      border-radius: 100px;
+    }
+

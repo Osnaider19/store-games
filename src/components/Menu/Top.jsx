@@ -12,7 +12,7 @@ function Top() {
       />
       <ItemMenu
         icon={<BiBarChartAlt2 />}
-        link={`/discover/best`}
+        link={`/discover/best-year`}
         name={"Best of the years"}
       />
       <ItemMenu

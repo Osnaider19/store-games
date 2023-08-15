@@ -9,12 +9,14 @@ export const Tags = () => {
   const { data, error, isPending, setIsPending } = useFetch(
     `${URL}/games?key=${API_KEY}&tags=${name}`
   );
-  useEffect(()=>{
-   scrollTo(0 , 0)
-  }, [name])
+  useEffect(() => {
+    scrollTo(0, 0);
+  }, [name]);
   return (
     <div className="pt-[60px] px-8">
-      <h1 className="text-5xl font-semibold capitalize py-2">Games {name.replace(/-/g, ' ')}</h1>
+      <h1 className="text-5xl font-semibold capitalize py-2">
+        Games {name.replace(/-/g, " ")}
+      </h1>
       {isPending && <Loader />}
       <div className="flex flex-wrap w-full gap-3 justify-between py-10">
         {data?.results.map((game) => (

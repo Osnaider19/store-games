@@ -5,6 +5,8 @@ import { last30Days } from "../../helpers/last30Days";
 import { Card } from "../Card/Card";
 import { useState } from "react";
 import { Loader } from "../Loader/Loader";
+import { Pagination } from "../Pagination/Pagination";
+import { Footer } from "../Footer/Footer";
 export const Last30Days = () => {
   const [page, setPage] = useState(1);
   const { data, isPending, error, setIsPending } = useFetch(
@@ -18,7 +20,7 @@ export const Last30Days = () => {
       {console.log(data)}
       <div>
         <div className="px-8">
-          <h1 className="text-5xl font-semibold">Last 30 days</h1>
+          <h1 className="text-5xl font-semibold pt-7">Last 30 days</h1>
           {isPending && <Loader />}
           <div className="flex flex-wrap w-full gap-3 justify-between py-10">
             {data?.results.map((game) => (
@@ -37,18 +39,15 @@ export const Last30Days = () => {
               </div>
             ))}
           </div>
-          <div className="flex w-full justify-center items-center  py-5">
-            {data?.next && (
-              <button
-                className="bg-red-600 px-4 py-1"
-                onClick={() => {
-                  setPage(page + 1), setIsPending(true);
-                }}
-              >
-                ver mas
-              </button>
-            )}
-          </div>
+
+          <Pagination
+            next={data?.next}
+            previous={data?.previous}
+            page={page}
+            setIsPending={setIsPending}
+            setPage={setPage}
+          />
+          <Footer/>
         </div>
       </div>
     </div>

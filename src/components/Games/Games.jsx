@@ -2,7 +2,6 @@ import { Card } from "../Card/Card";
 import { Loader } from "../Loader/Loader";
 import { ContextGames } from "../../Context/ContextGames/ContextGames";
 import { useContext, useEffect } from "react";
-import { HeaderFilters } from "./HeaderFilters";
 import { NoResults } from "./NoResults";
 import { Error } from "../Errors/Error";
 import { Footer } from "../Footer/Footer";

@@ -15,24 +15,22 @@ export const Creators = () => {
     `${URL}/games/${id}/development-team?key=${API_KEY}`
   );
   return (
-    <div className="px-8">
+    <div className="">
       {console.log(data)}
 
       {data?.results?.length !== 0 && (
         <div className="w-full relative ">
           <h4 className="text-3xl py-4 font-semibold">Creators</h4>
-
-          <ul className="flex flex-wrap w-full relative">
+          <ul className="flex flex-wrap w-full relative justify-center items-center">
             <Swiper
               slidesPerView={1}
-              centeredSlides={true}
+              centeredSlides={false}
               spaceBetween={30}
               grabCursor={true}
               breakpoints={{
                 640: {
                   slidesPerView: 1,
                   spaceBetween: 20,
-                  
                 },
                 768: {
                   slidesPerView: 2,
@@ -41,7 +39,6 @@ export const Creators = () => {
                 1024: {
                   slidesPerView: 3,
                   spaceBetween: 50,
-                  centeredSlides : false,
                 },
               }}
               pagination={{
@@ -51,17 +48,14 @@ export const Creators = () => {
               className="mySwiper"
             >
               {data?.results?.map((creator) => (
-                <SwiperSlide className="w-full">
-                  <li
-                    className="relative px-3 py-7 flex flex-col justify-center items-center  max-w-[300px] min-w-[300px] rounded-xl overflow-hidden border border-[#ffffff20]"
-                    key={creator.id}
-                  >
+                <SwiperSlide className="w-full" key={creator.id}>
+                  <li className="relative px-3 py-7 flex flex-col justify-center items-center  max-w-[300px] min-w-[300px] rounded-xl overflow-hidden border border-[#ffffff20]">
                     <BackgroundCreators background={creator.image_background} />
                     <div className="flex flex-col justify-center items-center w-full z-10">
                       <span className="py-3 font-semibold text-lg">
                         {creator.name}
                       </span>
-                      <div className="max-w-[100px] w-full overflow-hidden rounded-full max-h-[100px] min-h-[100px] h-full ">
+                      <div className="relative max-w-[110px] max-h-[110px] min-h-[110px] w-full h-full overflow-hidden rounded-full ">
                         <img
                           src={
                             creator.image
@@ -69,23 +63,23 @@ export const Creators = () => {
                                   "media/",
                                   `media/resize/420/-/`
                                 )
-                              : "../../../usuario.png"
+                              : "../../../../usuario.png"
                           }
+                          className="w-full min-h-full h-full object-cover"
                           alt=""
                           loading="lazy"
-                          className="w-full h-full object-cover"
                         />
                       </div>
                       <div className="py-2 flex flex-wrap gap-3 ">
                         {creator?.positions?.map((position) => (
-                          <div>{position.name}</div>
+                          <div key={position.id}>{position.name}</div>
                         ))}
                       </div>
                       <div className="w-full">
                         <p className="text-lg font-semibold">Known for</p>
                         <div className="flex flex-col py-1  w-full">
                           {creator?.games?.map((game) => (
-                            <Link to={`/games/${game.id}`}>
+                            <Link to={`/games/${game.id}`} key={game.id}>
                               <span className="text-sm hover:opacity-80 hover:underline">
                                 {game.name}
                               </span>
