@@ -1,29 +1,38 @@
-import React, { useEffect } from "react";
-import { useFetch } from "../../hooks/useFech";
-import { API_KEY, URL } from "../../config/config";
-import { last30Days } from "../../helpers/last30Days";
+import { useContext, useEffect } from "react";
 import { Card } from "../Card/Card";
-import { useState } from "react";
 import { Loader } from "../Loader/Loader";
 import { Pagination } from "../Pagination/Pagination";
 import { Footer } from "../Footer/Footer";
+import { FiltersOrdering } from "../Filters/FiltersOrdering";
+import { ContextLastDays } from "../../Context/contextLastDays/ContextLastDays";
 export const Last30Days = () => {
-  const [page, setPage] = useState(1);
-  const { data, isPending, error, setIsPending } = useFetch(
-    `${URL}/games?key=${API_KEY}&dates=${last30Days()}&page=${page}`
-  );
+  const {
+    data,
+    page,
+    updateOrdering,
+    isPending,
+    paginationNext,
+    paginationPrevious,
+  } = useContext(ContextLastDays);
+
   useEffect(() => {
     scrollTo(0, 0);
   }, [page]);
+
   return (
     <div className="pt-[60px] h-full w-full">
       {console.log(data)}
       <div>
-        <div className="px-8">
-          <h1 className="text-5xl font-semibold pt-7">Last 30 days</h1>
+        <div className="px-8 pt-5">
+          <div className="flex flex-col justify-between sm:flex-row items-cente">
+            <h1 className="text-5xl font-semibold">Last 30 days</h1>
+            <div className="flex w-full flex-col items-center  gap-2 sm:flex-row sm:w-auto md:px-5">
+              <FiltersOrdering updateFilters={updateOrdering} />
+            </div>
+          </div>
           {isPending && <Loader />}
           <div className="flex flex-wrap w-full gap-3 justify-between py-10">
-            {data?.results.map((game) => (
+            {data?.results?.map((game) => (
               <div
                 className="relative  max-w-[250px] h-full min-w-[250px]  overflow-hidden hover:-translate-y-3 transition-transform duration-200"
                 key={game.id}
@@ -43,11 +52,10 @@ export const Last30Days = () => {
           <Pagination
             next={data?.next}
             previous={data?.previous}
-            page={page}
-            setIsPending={setIsPending}
-            setPage={setPage}
+            paginationNext={paginationNext}
+            paginationPrevious={paginationPrevious}
           />
-          <Footer/>
+          <Footer />
         </div>
       </div>
     </div>
