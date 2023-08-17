@@ -16,6 +16,14 @@ export const Developers = () => {
   useEffect(() => {
     scrollTo(0, 0);
   }, [page]);
+  function paginationNext() {
+    setPage(page + 1);
+    setIsPending(true);
+  }
+  function paginationPrevious() {
+    setPage(page - 1);
+    setIsPending(true);
+  }
   return (
     <>
       {console.log(data)}
@@ -23,17 +31,19 @@ export const Developers = () => {
       {data && (
         <div className="pt-[60px] px-8 py-5">
           <div>
-            <h1 className="text-5xl font-semibold capitalize pt-7">
+            <h1 className="text-2xl md:text-5xl font-semibold capitalize pt-7">
               Developed by {name.replace(/-/g, " ")}
             </h1>
           </div>
           {isPending && <Loader />}
           {data?.results?.length <= 0 && <NoResults />}
-          {error && <Error status={error.status} statusText={error.statusText} />}
-          <div className="flex flex-wrap w-full gap-3 justify-between py-10">
+          {error && (
+            <Error status={error.status} statusText={error.statusText} />
+          )}
+          <div className="flex flex-wrap w-full gap-3 justify-center md:justify-between py-5">
             {data?.results?.map((game) => (
               <div
-                className="relative  max-w-[250px] h-full min-w-[250px]  overflow-hidden hover:-translate-y-3 transition-transform duration-200"
+                className="relative w-full max-w-[170px]  md:max-w-[250px] h-full md:min-w-[250px] overflow-hidden hover:-translate-y-3 transition-transform duration-200"
                 key={game.id}
               >
                 <Card
@@ -49,10 +59,9 @@ export const Developers = () => {
           </div>
           <Pagination
             next={data?.next}
-            page={page}
             previous={data?.previous}
-            setIsPending={setIsPending}
-            setPage={setPage}
+            paginationNext={paginationNext}
+            paginationPrevious={paginationPrevious}
           />
         </div>
       )}
