@@ -32,7 +32,25 @@ export const ContextGamesProvider = ({ children }) => {
     getData(
       `${URL}/games?key=${API_KEY}&dates=${date}&page=${page}&ordering=${ordering}`
     );
-  }, [page, date , ordering]);
+  }, [page, date, ordering]);
+  function updateDate(value) {
+    setDate(value);
+    setIsPending(true);
+    setPage(1);
+  }
+  function updateOrdering(value) {
+    setIsPending(true);
+    setPage(1);
+    setOrdering(value);
+  }
+  function paginationNext() {
+    setPage(page + 1);
+    setIsPending(true);
+  }
+  function paginationPrevious() {
+    setPage(page - 1);
+    setIsPending(true);
+  }
   return (
     <ContextGames.Provider
       value={{
@@ -46,7 +64,10 @@ export const ContextGamesProvider = ({ children }) => {
         error,
         ordering,
         setOrdering,
-        
+        updateOrdering,
+        paginationNext,
+        paginationPrevious,
+        updateDate,
       }}
     >
       {children}
