@@ -6,18 +6,19 @@ import { NoResults } from "./NoResults";
 import { Error } from "../Errors/Error";
 import { Footer } from "../Footer/Footer";
 import { Pagination } from "../Pagination/Pagination";
-import { Filters } from "../Filters/Filter";
+import { FiltersOrdering } from "../Filters/FiltersOrdering";
+import { FiltersDate } from "../Filters/FiltersDate";
 export const Games = () => {
   const {
     data,
     dataGames,
     isPending,
-    setIsPending,
     page,
-    setPage,
+    updateOrdering,
     error,
-    setDate,
-    setOrdering,
+    paginationNext,
+    paginationPrevious,
+    updateDate,
   } = useContext(ContextGames);
   useEffect(() => {
     scrollTo(0, 0);
@@ -31,12 +32,10 @@ export const Games = () => {
           <h1 className="text-4xl w-full font-semibold py-4 sm:w-auto  md:text-6xl">
             All games
           </h1>
-          <Filters
-            setDate={setDate}
-            setIsPending={setIsPending}
-            setOrdering={setOrdering}
-            setPage={setPage}
-          />
+          <div className="flex w-full flex-col items-center  gap-2 sm:flex-row sm:w-auto md:px-5">
+            <FiltersOrdering updateFilters={updateOrdering} />
+            <FiltersDate updateDate={updateDate} />
+          </div>
         </div>
 
         {isPending && <Loader />}
@@ -62,9 +61,8 @@ export const Games = () => {
         <Pagination
           next={data?.next}
           previous={data?.previous}
-          page={page}
-          setIsPending={setIsPending}
-          setPage={setPage}
+          paginationNext={paginationNext}
+          paginationPrevious={paginationPrevious}
         />
         <Footer />
       </div>
