@@ -13,7 +13,7 @@ export const Screenshots = () => {
 
   return (
     <>
-      {console.log(data)}
+      {/* {console.log(data)} */}
       {data && (
         <div className="relative w-full bg-[#181818] py-4">
           <h3 className="text-3xl  font-semibold capitalize py-2">Screenshots</h3>

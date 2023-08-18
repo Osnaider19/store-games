@@ -6,8 +6,6 @@ import { ContextSearch } from "../../Context/ContextSearch/ContextSearch";
 import { handelvisiblemenu } from "../../helpers/menuVisible";
 export const Search = () => {
   const { input, setIsPending, setInput } = useContext(ContextSearch);
-
-  
   return (
     <>
       <div className="header">

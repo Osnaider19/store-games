@@ -8,6 +8,7 @@ import { ContextTags } from "../../Context/ContextTags/ContextTags";
 import { Pagination } from "../Pagination/Pagination";
 import { Footer } from "../Footer/Footer";
 import { Error } from "../Errors/Error";
+import { NoResults } from "../Games/NoResults";
 export const Tags = () => {
   const { name } = useParams();
   const {
@@ -35,6 +36,7 @@ export const Tags = () => {
         </div>
       </div>
       {isPending && <Loader />}
+      {data?.results?.length <= 0 && <NoResults />}
       {error && <Error status={error.status} statusText={error.statusText} />}
       <div className="flex flex-wrap justify-center gap-3 py-10 sm:justify-between">
         {data?.results.map((game) => (

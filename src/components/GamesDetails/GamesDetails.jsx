@@ -33,7 +33,7 @@ export const GamesDetails = () => {
   }, [id]);
   return (
     <>
-      {console.log(data)}
+      {/* {console.log(data)} */}
       {isPending && <Loader />}
       {data && (
         <>
@@ -80,7 +80,7 @@ export const GamesDetails = () => {
                 </div>
               </div>
               {stateModal && <ModalScreenshots />}
-              {console.log(stateModal)}
+             
             </div>
           </div>
         </>

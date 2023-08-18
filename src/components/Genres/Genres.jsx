@@ -27,7 +27,7 @@ export const Genres = () => {
   }, [name, page]);
   return (
     <>
-      {console.log(data)}
+      {/* {console.log(data)} */}
       <div className="px-5 pt-[60px]">
         <div className="flex flex-col justify-between sm:flex-row">
           <h1 className="text-4xl w-full font-semibold py-4 sm:w-auto  md:text-6xl">

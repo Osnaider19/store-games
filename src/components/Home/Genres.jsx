@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 export const Genres = () => {
   const { data } = useFetch(`${URL}/genres?key=${API_KEY}`);
-  console.log(data);
+  // console.log(data);
   return (
     <div className="relative z-10 bg-[#121212]">
       <div className="px-4 md:px-8">

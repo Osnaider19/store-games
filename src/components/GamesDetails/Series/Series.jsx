@@ -11,8 +11,8 @@ export const Series = () => {
       {data?.results?.length !== 0 && (
         <div className="relative w-full h-full">
           <div>
-            <h4 className="text-xl md:text-3xl py-4 font-semibold capitalize">
-            games of the same series
+            <h4 className="text-xl md:text-3xl py-4 font-semibold ">
+            Games of the same series
             </h4>
             <ul className="flex flex-wrap justify-center w-full gap-5 md:gap-3 sm:justify-between sm:gap-1">
               {data?.results?.map((game) => (

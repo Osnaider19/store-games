@@ -20,15 +20,21 @@ export const Platfroms = () => {
     paginationPrevious,
     paginationNext,
     page,
+    setIsPending,
+    setPage
     
   } = useContext(ContextPlatforms);
   
   useEffect(() => {
     scrollTo(0, 0);
-  }, [page]);
+    setIsPending(true)
+  }, [page , name]);
+  useEffect(() => {
+    setPage(1)
+  }, [name]);
   return (
     <>
-      {console.log(data)}
+      {/* {console.log(data)}  */}
       <div className="px-5 pt-[60px]">
         <div className="flex flex-col justify-between sm:flex-row">
           <h1 className="py-3 text-5xl font-bold ">

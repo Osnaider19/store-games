@@ -11,7 +11,6 @@ import { FiltersDate } from "../Filters/FiltersDate";
 export const Games = () => {
   const {
     data,
-    dataGames,
     isPending,
     page,
     updateOrdering,
@@ -26,8 +25,7 @@ export const Games = () => {
   return (
     <>
       <div className="px-4 py-4">
-        {console.log(data)}
-        {console.log(dataGames)}
+        {/* {console.log(data)} */}
         <div className="flex flex-col justify-between sm:flex-row">
           <h1 className="text-4xl w-full font-semibold py-4 sm:w-auto  md:text-6xl">
             All games

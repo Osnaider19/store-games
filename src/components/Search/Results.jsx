@@ -6,7 +6,7 @@ export const Results = () => {
   const { data , setInput  }= useContext(ContextSearch);
   return (
     <>
-    {console.log(data)}
+    {/* {console.log(data)} */}
       <div
         className="fixed left-0 top-0 w-full h-full -z-10 "
         onClick={() => {

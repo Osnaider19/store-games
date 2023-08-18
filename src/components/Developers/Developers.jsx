@@ -7,6 +7,7 @@ import { useState, useEffect } from "react";
 import { Pagination } from "../Pagination/Pagination";
 import { NoResults } from "../Games/NoResults";
 import { Error } from "../Errors/Error";
+import { Footer } from "../Footer/Footer";
 export const Developers = () => {
   const { name } = useParams();
   const [page, setPage] = useState(1);
@@ -26,8 +27,7 @@ export const Developers = () => {
   }
   return (
     <>
-      {console.log(data)}
-
+      {/* {console.log(data)} */}
       {data && (
         <div className="pt-[60px] px-8 py-5">
           <div>
@@ -63,6 +63,7 @@ export const Developers = () => {
             paginationNext={paginationNext}
             paginationPrevious={paginationPrevious}
           />
+          <Footer/>
         </div>
       )}
     </>

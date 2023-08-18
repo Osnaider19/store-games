@@ -5,12 +5,15 @@ import { Pagination } from "../Pagination/Pagination";
 import { Footer } from "../Footer/Footer";
 import { FiltersOrdering } from "../Filters/FiltersOrdering";
 import { ContextLastDays } from "../../Context/contextLastDays/ContextLastDays";
+import { NoResults } from "../Games/NoResults";
+import { Error } from "../Errors/Error";
 export const Last30Days = () => {
   const {
     data,
     page,
     updateOrdering,
     isPending,
+    error,
     paginationNext,
     paginationPrevious,
   } = useContext(ContextLastDays);
@@ -21,7 +24,7 @@ export const Last30Days = () => {
 
   return (
     <div className="pt-[60px] h-full w-full">
-      {console.log(data)}
+      {/* {console.log(data)} */}
       <div>
         <div className="px-8 pt-5">
           <div className="flex flex-col justify-between sm:flex-row items-cente">
@@ -31,6 +34,8 @@ export const Last30Days = () => {
             </div>
           </div>
           {isPending && <Loader />}
+          {data?.results?.length <= 0 && <NoResults />}
+          {error && <Error status={error.status} statusText={error.statusText} />}
           <div className="flex flex-wrap w-full gap-3 justify-center md:justify-between py-10">
             {data?.results?.map((game) => (
               <div

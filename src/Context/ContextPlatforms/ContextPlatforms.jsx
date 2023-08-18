@@ -61,6 +61,7 @@ export const ContextPlatformsProvider = ({ children }) => {
     setIsPending(true);
     setPage(1);
   }
+  
   return (
     <ContextPlatforms.Provider
       value={{
@@ -73,6 +74,8 @@ export const ContextPlatformsProvider = ({ children }) => {
         paginationPrevious,
         updateDate,
         updatePlatfroms,
+        setIsPending,
+        setPage
       }}
     >
       {children}

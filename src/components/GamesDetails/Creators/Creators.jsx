@@ -13,7 +13,7 @@ export const Creators = () => {
  
   return (
     <div className="">
-      {console.log(data)}
+      {/* {console.log(data)} */}
 
       {data?.results?.length !== 0 && (
         <div className="w-full relative ">

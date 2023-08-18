@@ -13,7 +13,7 @@ export const ShoppingStore = () => {
   };
   return (
     <div>
-        {console.log(data)}
+        {/* {console.log(data)} */}
       <div>
         <h4 className="text-xl py-1 font-semibold">Where to buy</h4>
         <div className="flex gap-2 py-2 flex-wrap">

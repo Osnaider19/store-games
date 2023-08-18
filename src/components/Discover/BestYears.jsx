@@ -1,10 +1,12 @@
-import { useContext , useEffect} from "react";
+import { useContext, useEffect } from "react";
 import { Card } from "../Card/Card";
 import { Loader } from "../Loader/Loader";
 import { Pagination } from "../Pagination/Pagination";
 import { Footer } from "../Footer/Footer";
 import { ContextBestYear } from "../../Context/contextBestyear/ContextBestYear";
 import { FiltersOrdering } from "../Filters/FiltersOrdering";
+import { NoResults } from "../Games/NoResults";
+import { Error } from "../Errors/Error";
 export const BestYears = () => {
   const {
     data,
@@ -20,7 +22,7 @@ export const BestYears = () => {
   }, [page]);
   return (
     <div className="pt-[60px] h-full w-full">
-      {console.log(data)}
+      {/* {console.log(data)} */}
       <div>
         <div className="px-4 md:px-8">
           <div className="flex flex-col justify-between sm:flex-row">
@@ -33,6 +35,8 @@ export const BestYears = () => {
           </div>
 
           {isPending && <Loader />}
+          {data?.results?.length <= 0 && <NoResults />}
+          {error && <Error status={error.status} statusText={error.statusText} />}
           <div className="flex flex-wrap w-full gap-3 justify-center md:justify-between py-10">
             {data?.results.map((game) => (
               <div
