@@ -16,7 +16,7 @@ export function Slider({ data, error }) {
         </div>
       )}
       <div className="relative top-[60px] h-screen w-full flex  snap-mandatory overflow-hidden">
-        {data?.results.slice(16, 17).map((game) => (
+        {data?.results.slice(19, 20).map((game) => (
           <div key={game.id} className="relative min-w-full snap-x">
             <BackgroundHome background={game.background_image} />
             <div className="flex">

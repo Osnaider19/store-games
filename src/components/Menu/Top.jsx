@@ -15,11 +15,6 @@ function Top() {
         link={`/discover/best-year`}
         name={"Best of the years"}
       />
-      <ItemMenu
-        icon={<BiBarChartAlt2 />}
-        link={`/discover/top`}
-        name={"All tim top 250"}
-      />
     </div>
   );
 }

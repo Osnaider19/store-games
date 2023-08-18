@@ -1,6 +1,7 @@
 import React from "react";
 import { Redes } from "./Redes";
 import { ItemLink } from "./ItemLink";
+import { Copyright } from "./copyright";
 
 export const Footer = () => {
   return (
@@ -24,7 +25,7 @@ export const Footer = () => {
             <ItemLink link={`#`} text="registered trademark" />
           </div>
         </ul>
-        
+        <Copyright/>
       </div>
     </div>
   );
