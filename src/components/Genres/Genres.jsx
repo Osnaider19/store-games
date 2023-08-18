@@ -1,44 +1,47 @@
 import { useParams } from "react-router-dom";
-import { useFetch } from "../../hooks/useFech";
-import { URL } from "../../config/config";
-import { API_KEY } from "../../config/config";
 import { Card } from "../Card/Card";
 import { Loader } from "../Loader/Loader";
-import { useState, useEffect } from "react";
+import { useEffect, useContext } from "react";
 import { Pagination } from "../Pagination/Pagination";
 import { Footer } from "../Footer/Footer";
-import { Filters } from "../Filters/Filter";
 import { NoResults } from "../Games/NoResults";
+import { ContextGenres } from "../../Context/ContextGenres/ContextGenres";
+import { Error } from "../Errors/Error";
+import { FiltersOrdering } from "../Filters/FiltersOrdering";
+import { FiltersDate } from "../Filters/FiltersDate";
 export const Genres = () => {
   const { name } = useParams();
-  const [page, setPage] = useState(1);
-  const [date, setDate] = useState("");
-  const [ordering, setOrdering] = useState("");
-  const { data, error, isPending, setIsPending } = useFetch(
-    `${URL}/games?key=${API_KEY}&genres=${name}&page=${page}&dates=${date}&ordering=${ordering}`
-  );
+  const {
+    data,
+    isPending,
+    error,
+    page,
+    updateDate,
+    updateOrdering,
+    paginationNext,
+    paginationPrevious,
+  } = useContext(ContextGenres);
 
   useEffect(() => {
     scrollTo(0, 0);
-    setIsPending(true);
   }, [name, page]);
   return (
     <>
       {console.log(data)}
       <div className="px-5 pt-[60px]">
         <div className="flex flex-col justify-between sm:flex-row">
-          <h1 className="py-3 text-5xl font-bold capitalize">
+          <h1 className="text-4xl w-full font-semibold py-4 sm:w-auto  md:text-6xl">
             Games {name.replace(/-/g, " ")}
           </h1>
-          <Filters
-            setDate={setDate}
-            setIsPending={setIsPending}
-            setOrdering={setOrdering}
-            setPage={setPage}
-          />
+          <div className="flex w-full flex-col items-center  gap-2 sm:flex-row sm:w-auto md:px-5">
+            <FiltersOrdering updateFilters={updateOrdering} />
+            <FiltersDate updateDate={updateDate} />
+          </div>
         </div>
+
         {isPending && <Loader />}
-        {data?.results?.length <= 0 && <NoResults/>}
+        {data?.results?.length <= 0 && <NoResults />}
+        {error && <Error status={error.status} statusText={error.statusText} />}
         <div className="flex flex-wrap w-full gap-3 justify-center md:justify-between py-10">
           {data?.results.map((game) => (
             <div
@@ -59,9 +62,8 @@ export const Genres = () => {
         <Pagination
           next={data?.next}
           previous={data?.previous}
-          page={page}
-          setIsPending={setIsPending}
-          setPage={setPage}
+          paginationNext={paginationNext}
+          paginationPrevious={paginationPrevious}
         />
         <Footer />
       </div>
