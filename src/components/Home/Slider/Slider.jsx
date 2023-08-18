@@ -1,26 +1,29 @@
 import React from "react";
-import { useFetch } from "../../../hooks/useFech";
 import { Genres } from "./Genres";
 import { RatingStar } from "./RatingStar";
 import { BackgroundHome } from "./BackgroundHome";
 import { Platforms } from "./Platforms";
 import { Date } from "./Date";
 import { Link } from "react-router-dom";
-import { API_KEY, URL } from "../../../config/config";
-export function Slider() {
-  const { data, error } = useFetch(`${URL}/games?key=${API_KEY}`);
+export function Slider({ data, error }) {
   return (
     <>
       {console.log(data)}
-      {console.log(error?.statusText)}
-      <div className="relative top-[60px] h-screen w-full flex  snap-mandatory ">
-        {error && <div className="text-4xl">{error.status}{error.statusText}</div>}
+      {error && (
+        <div className="text-4xl">
+          {error.status}
+          {error.statusText}
+        </div>
+      )}
+      <div className="relative top-[60px] h-screen w-full flex  snap-mandatory overflow-hidden">
         {data?.results.slice(16, 17).map((game) => (
           <div key={game.id} className="relative min-w-full snap-x">
             <BackgroundHome background={game.background_image} />
             <div className="flex">
               <div className="relative pt-10 w-[90%] h-full m-auto z-30 ">
-                <p className="text-2xl md:text-4xl font-semibold text-white">{game.name}</p>
+                <p className="text-2xl md:text-4xl font-semibold text-white">
+                  {game.name}
+                </p>
                 <Date released={game.released} />
                 <div className="text-xl">
                   <RatingStar rating={game.rating} votes={game.ratings_count} />
