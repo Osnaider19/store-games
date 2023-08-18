@@ -7,12 +7,12 @@ import { GamesPage } from "./page/GamesPage";
 import { HomePage } from "./page/HomePage";
 import { ContextSearchProvider } from "./Context/ContextSearch/ContextSearch";
 import { Layout } from "./components/Layout/Layout";
-import { Tags } from "./components/Tags/Tags";
 import { Developers } from "./components/Developers/Developers";
 import { Page404 } from "./page/Page404";
 import { Last30DaysPage } from "./components/Discover/Last30DaysPage";
 import { PlatformsPage } from "./components/Platfroms/PlatformsPage";
 import { BestYearPage } from "./components/Discover/BestYearPage";
+import { TagsPage } from "./components/Tags/TagsPage";
 
 function App() {
   return (
@@ -27,7 +27,7 @@ function App() {
           <Route path="/games/" element={<GamesPage />}></Route>
           <Route path="/games/:id" element={<Details />}></Route>
           <Route path="/platforms/:id/:name" element={<PlatformsPage />}></Route>
-          <Route path="/tags/:name" element={<Tags />}></Route>
+          <Route path="/tags/:name" element={<TagsPage />}></Route>
           <Route path="/developers/:name" element={<Developers />}></Route>
           <Route path="/games/filters/:name" element={<GamesPage />}></Route>
           <Route path="/discover/last-30-days" element={<Last30DaysPage />}></Route>

@@ -1,27 +1,39 @@
-import React, { useEffect } from "react";
-import { useFetch } from "../../hooks/useFech";
+import React, { useContext } from "react";
 import { useParams } from "react-router-dom";
 import { Card } from "../Card/Card";
-import { API_KEY, URL } from "../../config/config";
 import { Loader } from "../Loader/Loader";
+import { FiltersOrdering } from "../Filters/FiltersOrdering";
+import { FiltersDate } from "../Filters/FiltersDate";
+import { ContextTags } from "../../Context/ContextTags/ContextTags";
+import { Pagination } from "../Pagination/Pagination";
+import { Footer } from "../Footer/Footer";
 export const Tags = () => {
   const { name } = useParams();
-  const { data, error, isPending, setIsPending } = useFetch(
-    `${URL}/games?key=${API_KEY}&tags=${name}`
-  );
-  useEffect(() => {
-    scrollTo(0, 0);
-  }, [name]);
+  const {
+    data,
+    isPending,
+    error,
+    updateOrdering,
+    paginationNext,
+    paginationPrevious,
+    updateDate,
+  } = useContext(ContextTags);
   return (
     <div className="pt-[60px] px-8">
-      <h1 className="text-5xl font-semibold capitalize py-2">
-        Games {name.replace(/-/g, " ")}
-      </h1>
+      <div className="flex flex-col justify-between sm:flex-row">
+        <h1 className="text-4xl w-full font-semibold py-4 sm:w-auto  md:text-6xl">
+          Games {name.replace(/-/g, " ")}
+        </h1>
+        <div className="flex w-full flex-col items-center  gap-2 sm:flex-row sm:w-auto md:px-5">
+          <FiltersOrdering updateFilters={updateOrdering} />
+          <FiltersDate updateDate={updateDate} />
+        </div>
+      </div>
       {isPending && <Loader />}
-      <div className="flex flex-wrap w-full gap-3 justify-between py-10">
+      <div className="flex flex-wrap justify-center gap-3 py-10 sm:justify-between">
         {data?.results.map((game) => (
           <div
-            className="relative  max-w-[250px] h-full min-w-[250px]  overflow-hidden hover:-translate-y-3 transition-transform duration-200"
+            className="relative w-full max-w-[170px]  md:max-w-[250px] h-full md:min-w-[250px] overflow-hidden hover:-translate-y-3 transition-transform duration-200"
             key={game.id}
           >
             <Card
@@ -35,6 +47,13 @@ export const Tags = () => {
           </div>
         ))}
       </div>
+      <Pagination
+        next={data?.next}
+        previous={data?.previous}
+        paginationNext={paginationNext}
+        paginationPrevious={paginationPrevious}
+      />
+      <Footer/>
     </div>
   );
 };
