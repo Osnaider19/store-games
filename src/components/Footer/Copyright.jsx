@@ -12,7 +12,7 @@ export const Copyright = () => {
         elsewhere. Other brands or product names are the trademarks of their
         respective owners.
       </p>
-      <div className="flex gap-5 justify-evenly items-center py-5 border-b">
+      <div className="flex gap-5 justify-evenly items-center py-5 border-b flex-wrap">
         <ItemLink link={`#`} text={`Terms of Service`} />
         <ItemLink link={`#`} text={`Privacy Policy`} />
         <ItemLink link={`#`} text={`Store Refund Policy`} />

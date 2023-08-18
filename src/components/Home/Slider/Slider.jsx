@@ -8,7 +8,6 @@ import { Link } from "react-router-dom";
 export function Slider({ data, error }) {
   return (
     <>
-      {console.log(data)}
       {error && (
         <div className="text-4xl">
           {error.status}
@@ -16,7 +15,7 @@ export function Slider({ data, error }) {
         </div>
       )}
       <div className="relative top-[60px] h-screen w-full flex  snap-mandatory overflow-hidden">
-        {data?.results.slice(19, 20).map((game) => (
+        {data?.results.slice(16, 17).map((game) => (
           <div key={game.id} className="relative min-w-full snap-x">
             <BackgroundHome background={game.background_image} />
             <div className="flex">

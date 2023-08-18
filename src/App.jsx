@@ -1,7 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import { Menu } from "./components/Menu/Menu";
-import { Genres } from "./components/Genres/Genres";
 import { Details } from "./components/GamesDetails/Details";
 import { GamesPage } from "./page/GamesPage";
 import { HomePage } from "./page/HomePage";
@@ -13,6 +12,7 @@ import { Last30DaysPage } from "./components/Discover/Last30DaysPage";
 import { PlatformsPage } from "./components/Platfroms/PlatformsPage";
 import { BestYearPage } from "./components/Discover/BestYearPage";
 import { TagsPage } from "./components/Tags/TagsPage";
+import { GenresPage } from "./components/Genres/GenresPage";
 
 function App() {
   return (
@@ -23,7 +23,7 @@ function App() {
       <Layout>
         <Routes>
           <Route path="/" element={<HomePage />}></Route>
-          <Route path="/genres/:name" element={<Genres />}></Route>
+          <Route path="/genres/:name" element={<GenresPage />}></Route>
           <Route path="/games/" element={<GamesPage />}></Route>
           <Route path="/games/:id" element={<Details />}></Route>
           <Route path="/platforms/:id/:name" element={<PlatformsPage />}></Route>
