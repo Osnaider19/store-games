@@ -17,7 +17,7 @@ export const ModalScreenshots = () => {
           </i>
         </button>
       </div>
-      <div className="relative flex justify-center items-center w-[85%] h-[85%] z-50 rounded-lg overflow-hidden">
+      <div className="relative flex w-full h-auto justify-center items-center md:w-[85%] md:h-[85%] z-50 rounded-lg overflow-hidden">
         <div className="relative flex justify-center items-center w-full h-full overflow-hidden rounded-xl">
           <div className="h-full w-full">
             <img
