@@ -10,7 +10,7 @@ export const Platforms = () => {
       <div className="flex py-1 flex-wrap w-full gap-4">
         {data?.platforms?.map((platform) => (
           <Link
-            to={`/platforms/${platform.platform.id}`}
+            to={`/platforms/${platform.platform.slug}`}
             key={platform.platform.id}
             className="hover:opacity-70 hover:underline"
           >

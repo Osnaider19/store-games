@@ -26,15 +26,15 @@ export const Last30Days = () => {
         <div className="px-8 pt-5">
           <div className="flex flex-col justify-between sm:flex-row items-cente">
             <h1 className="text-5xl font-semibold">Last 30 days</h1>
-            <div className="flex w-full flex-col items-center  gap-2 sm:flex-row sm:w-auto md:px-5">
+            <div className="flex w-full flex-col items-center  gap-2 sm:flex-row sm:w-auto md:px-5 py-2">
               <FiltersOrdering updateFilters={updateOrdering} />
             </div>
           </div>
           {isPending && <Loader />}
-          <div className="flex flex-wrap w-full gap-3 justify-between py-10">
+          <div className="flex flex-wrap w-full gap-3 justify-center md:justify-between py-10">
             {data?.results?.map((game) => (
               <div
-                className="relative  max-w-[250px] h-full min-w-[250px]  overflow-hidden hover:-translate-y-3 transition-transform duration-200"
+                className="relative w-full max-w-[170px]  md:max-w-[250px] h-full md:min-w-[250px] overflow-hidden hover:-translate-y-3 transition-transform duration-200"
                 key={game.id}
               >
                 <Card

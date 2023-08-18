@@ -1,16 +1,20 @@
-import React from "react";
-import { useFetch } from "../../hooks/useFech";
-import { URL, API_KEY } from "../../config/config";
+import { useContext , useEffect} from "react";
 import { Card } from "../Card/Card";
 import { Loader } from "../Loader/Loader";
 import { Pagination } from "../Pagination/Pagination";
-import { useState , useEffect} from "react";
 import { Footer } from "../Footer/Footer";
+import { ContextBestYear } from "../../Context/contextBestyear/ContextBestYear";
+import { FiltersOrdering } from "../Filters/FiltersOrdering";
 export const BestYears = () => {
-  const [page, setPage] = useState(1);
-  const { data, isPending, setIsPending, error } = useFetch(
-    `${URL}/games?key=${API_KEY}&dates=2023-01-01,2023-12-31&ordering=-added&page=${page}`
-  );
+  const {
+    data,
+    isPending,
+    error,
+    page,
+    updateOrdering,
+    paginationNext,
+    paginationPrevious,
+  } = useContext(ContextBestYear);
   useEffect(() => {
     scrollTo(0, 0);
   }, [page]);
@@ -19,9 +23,15 @@ export const BestYears = () => {
       {console.log(data)}
       <div>
         <div className="px-4 md:px-8">
-          <h1 className="text-5xl font-semibold pt-7 capitalize">
-            Best of the year
-          </h1>
+          <div className="flex flex-col justify-between sm:flex-row">
+            <h1 className="text-3xl md:text-5xl font-semibold pt-7 capitalize">
+              Best of the year
+            </h1>
+            <div className="flex w-full flex-col items-center  gap-2 sm:flex-row sm:w-auto md:px-5 py-2">
+              <FiltersOrdering updateFilters={updateOrdering} />
+            </div>
+          </div>
+
           {isPending && <Loader />}
           <div className="flex flex-wrap w-full gap-3 justify-center md:justify-between py-10">
             {data?.results.map((game) => (
@@ -44,9 +54,8 @@ export const BestYears = () => {
           <Pagination
             next={data?.next}
             previous={data?.previous}
-            page={page}
-            setIsPending={setIsPending}
-            setPage={setPage}
+            paginationNext={paginationNext}
+            paginationPrevious={paginationPrevious}
           />
           <Footer />
         </div>

@@ -20,7 +20,7 @@ export const Creators = () => {
           <h4 className="text-3xl py-4 font-semibold">Creators</h4>
           <ul className="flex min-w-full relative  items-center overflow-hidden gap-7 overflow-x-auto container__creators">
             {data?.results?.map((creator) => (
-              <li className="relative px-3 mb-4 py-7 flex flex-col justify-center items-center  max-w-[300px] min-w-[300px] rounded-xl overflow-hidden border border-[#ffffff20] ">
+              <li className="relative px-3 mb-4 py-7 flex flex-col justify-center items-center  max-w-[300px] min-w-[300px] rounded-xl overflow-hidden border border-[#ffffff20] " key={creator.id}>
                 <BackgroundCreators background={creator.image_background} />
                 <div className="flex flex-col justify-center items-center w-full z-10">
                   <span className="py-3 font-semibold text-lg">
