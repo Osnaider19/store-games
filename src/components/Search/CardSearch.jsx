@@ -13,8 +13,8 @@ export const CardSearch = ({ games , setInput }) => {
             setInput("")
           }}
         >
-          <div className="relative flex  gap-2 min-w-full ">
-            <div className="">
+          <div className="relative flex  gap-3 min-w-full ">
+            <div className="min-w-[100px] min-h-[100px] max-w-[100px] max-h-[100px] ">
               <img
                 src={game.background_image?.replace(
                   "media/",
@@ -22,7 +22,7 @@ export const CardSearch = ({ games , setInput }) => {
                 )}
                 alt=""
                 loading="lazy"
-                className="w-[100px] h-[100px] object-cover rounded-lg overflow-hidden"
+                className="min-h-full min-w-full object-cover rounded-lg overflow-hidden"
               />
             </div>
             <div>

@@ -15,7 +15,7 @@ export const Results = () => {
       ></div>
       <div className="content__results">
         <div className="content__results__search">
-          <div className="relative w-full h-full flex flex-wrap  px-3 py-3 gap-1">
+          <div className="relative w-full h-full flex flex-wrap  px-3 py-3 gap-2">
             {data?.results?.length !== 0 ? (
               <CardSearch games={data.results} setInput={setInput} />
             ) : (
