@@ -5,14 +5,14 @@ import { URL, API_KEY } from "../../config/config";
 export const ContextPlatforms = createContext();
 
 export const ContextPlatformsProvider = ({ children }) => {
-  const { name } = useParams();
+  const { id } = useParams();
   const [data, setData] = useState(null);
   const [isPending, setIsPending] = useState(true);
   const [error, setError] = useState(null);
   const [page, setPage] = useState(1);
   const [date, setDate] = useState("");
   const [ordering, setOrdering] = useState("");
-  const [platforms, setPlatforms] = useState(name);
+  
   const getData = async (url) => {
     try {
       const res = await fetch(url);
@@ -34,9 +34,9 @@ export const ContextPlatformsProvider = ({ children }) => {
   };
   useEffect(() => {
     getData(
-      `${URL}/games?key=${API_KEY}&platforms=${platforms}&page=${page}&ordering=${ordering}&dates=${date}`
+      `${URL}/games?key=${API_KEY}&platforms=${id}&page=${page}&ordering=${ordering}&dates=${date}`
     );
-  }, [page, ordering, date, platforms , name]);
+  }, [page, ordering, date , id]);
 
   function updateOrdering(value) {
     setIsPending(true);

@@ -8,8 +8,9 @@ import { FiltersOrdering } from "../Filters/FiltersOrdering";
 import { FiltersDate } from "../Filters/FiltersDate";
 import { NoResults } from "../Games/NoResults";
 import { Error } from "../Errors/Error";
-import { FiltersPlatforms } from "../Filters/FiltersPlatforms";
+import { useParams } from "react-router-dom";
 export const Platfroms = () => {
+  const {name} = useParams();
   const {
     data,
     isPending,
@@ -19,9 +20,9 @@ export const Platfroms = () => {
     paginationPrevious,
     paginationNext,
     page,
-    updatePlatfroms,
+    
   } = useContext(ContextPlatforms);
-  const [title, setTitle] = useState("");
+  
   useEffect(() => {
     scrollTo(0, 0);
   }, [page]);
@@ -30,8 +31,8 @@ export const Platfroms = () => {
       {console.log(data)}
       <div className="px-5 pt-[60px]">
         <div className="flex flex-col justify-between sm:flex-row">
-          <h1 className="py-3 text-5xl font-bold capitalize">
-            Games of {title}
+          <h1 className="py-3 text-5xl font-bold ">
+            Games of {name}
           </h1>
           <div className="flex w-full flex-col items-center  gap-2 sm:flex-row sm:w-auto md:px-5">
             <FiltersOrdering updateFilters={updateOrdering} />
