@@ -24,8 +24,9 @@ export const Tags = () => {
   useEffect(() => {
     scrollTo(0, 0);
   }, [page]);
+  
   return (
-    <div className="pt-[60px] px-8">
+    <div className="pt-[60px] px-4 md:px-8">
       <div className="flex flex-col justify-between sm:flex-row">
         <h1 className="text-2xl w-full font-semibold py-4 sm:w-auto  md:text-6xl">
           Games {name.replace(/-/g, " ")}

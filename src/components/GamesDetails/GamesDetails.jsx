@@ -31,6 +31,7 @@ export const GamesDetails = () => {
   useEffect(() => {
     scrollTo(0, 0);
   }, [id]);
+  // document.title = data ?  `Games | ${data?.name}` : "Games"
   return (
     <>
       {/* {console.log(data)} */}

@@ -15,7 +15,7 @@ export const ContextScreenProvider = ({ children }) => {
     setStateModal(true);
     const imgFilter = data.results.find((screen) => screen.id === imgId);
     setFilter(imgFilter);
-    console.log(filter);
+    // console.log(filter);
     document.documentElement.style.overflow = "hidden"
   };
 
