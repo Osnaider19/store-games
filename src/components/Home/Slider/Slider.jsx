@@ -5,17 +5,19 @@ import { BackgroundHome } from "./BackgroundHome";
 import { Platforms } from "./Platforms";
 import { Date } from "./Date";
 import { Link } from "react-router-dom";
-export function Slider({ data, error }) {
+import { useGetHome } from "../../../hooks/useGetHome";
+export function Slider() {
+  const { data, isError } = useGetHome();
+  const games = data?.games.results;
   return (
     <>
-      {error && (
+      {isError && (
         <div className="text-4xl">
-          {error.status}
-          {error.statusText}
+          error en obtner los datos
         </div>
       )}
       <div className="relative top-[60px] h-screen w-full flex  snap-mandatory overflow-hidden">
-        {data?.results.slice(16, 17).map((game) => (
+        {games?.slice(16, 17).map((game) => (
           <div key={game.id} className="relative min-w-full snap-x">
             <BackgroundHome background={game.background_image} />
             <div className="flex">
