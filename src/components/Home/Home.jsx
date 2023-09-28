@@ -1,6 +1,5 @@
 import { Games } from "./GamesHome/Games";
 import { Genres } from "./Genres";
-import { Slider } from "./Slider/Slider";
 import { Footer } from "../Footer/Footer";
 import { useEffect } from "react";
 export const Home = () => {
