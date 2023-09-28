@@ -13,10 +13,12 @@ import { PlatformsPage } from "./components/Platfroms/PlatformsPage";
 import { BestYearPage } from "./components/Discover/BestYearPage";
 import { TagsPage } from "./components/Tags/TagsPage";
 import { GenresPage } from "./components/Genres/GenresPage";
-
+import { QueryClientProvider , QueryClient } from "@tanstack/react-query";
 function App() {
+
+  const queryClient = new QueryClient();
   return (
-    <>
+    <QueryClientProvider client={queryClient}>
       <ContextSearchProvider>
         <Menu />
       </ContextSearchProvider>
@@ -26,16 +28,22 @@ function App() {
           <Route path="/genres/:name" element={<GenresPage />}></Route>
           <Route path="/games/" element={<GamesPage />}></Route>
           <Route path="/games/:id" element={<Details />}></Route>
-          <Route path="/platforms/:id/:name" element={<PlatformsPage />}></Route>
+          <Route
+            path="/platforms/:id/:name"
+            element={<PlatformsPage />}
+          ></Route>
           <Route path="/tags/:name" element={<TagsPage />}></Route>
           <Route path="/developers/:name" element={<Developers />}></Route>
           <Route path="/games/filters/:name" element={<GamesPage />}></Route>
-          <Route path="/discover/last-30-days" element={<Last30DaysPage />}></Route>
+          <Route
+            path="/discover/last-30-days"
+            element={<Last30DaysPage />}
+          ></Route>
           <Route path="/discover/best-year" element={<BestYearPage />}></Route>
           <Route path="*" element={<Page404 />}></Route>
         </Routes>
       </Layout>
-    </>
+    </QueryClientProvider>
   );
 }
 
