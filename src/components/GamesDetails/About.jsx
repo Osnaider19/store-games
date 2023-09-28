@@ -1,6 +1,7 @@
 import React, { useRef } from "react";
 import "./about.css";
-export const About = ({ about }) => {
+import { useGamesDetails } from "../../hooks/useGamesDetails";
+export const About = () => {
   const buttonMo = useRef();
   const contentText = useRef();
   const contentGradiend = useRef();
@@ -14,11 +15,13 @@ export const About = ({ about }) => {
       contentGradiend.current.style.display = "block"
     }
   }
+  const { data } = useGamesDetails();
+  const description = data?.details?.description;
   return (
     <div className="pb-10">
       <h2 className="title__about">About</h2>
       <div
-        dangerouslySetInnerHTML={{ __html: about }}
+        dangerouslySetInnerHTML={{ __html: description }}
         className="container__text__about"
         ref={contentText}
       />

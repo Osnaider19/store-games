@@ -1,17 +1,17 @@
-import React, { useContext } from "react";
+
 import { esbrRating } from "../../helpers/esbrRating";
-import { ContextDetails } from "../../Context/contextDetails/ContextDetails";
+import { useGamesDetails } from "../../hooks/useGamesDetails";
 
 export const EsbrRating = () => {
-  const {data} = useContext(ContextDetails);
+  const { data :  {details} } = useGamesDetails();
   return (
     <>
-      {data.esrb_rating && (
+      {details?.esrb_rating && (
         <div>
           <div>
             <h3 className="text-lg">Age rantings</h3>
             <span className="text-lg">
-              {esbrRating(data.esrb_rating.slug)} {data.esrb_rating.name}
+              {esbrRating(details?.esrb_rating.slug)} {details?.esrb_rating.name}
             </span>
           </div>
         </div>

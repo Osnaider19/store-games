@@ -1,14 +1,14 @@
-import React, { useContext } from "react";
-import { ContextDetails } from "../../Context/contextDetails/ContextDetails";
 import { Link } from "react-router-dom";
+import { useGamesDetails } from "../../hooks/useGamesDetails";
 
 export const Tags = () => {
-  const { data } = useContext(ContextDetails);
+  const { data } = useGamesDetails();
+  const tags = data?.details.tags
   return (
     <div>
       <h4 className="text-lg opacity-70 font-semibold  py-2">Tags</h4>
       <div className="flex gap-3 flex-wrap  ">
-        {data?.tags.map((tag) => (
+        {tags?.map((tag) => (
           <Link
             to={`/tags/${tag.slug}`}
             className="hover:opacity-70 hover:underline"

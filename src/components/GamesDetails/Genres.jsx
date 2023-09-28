@@ -1,10 +1,10 @@
-import React, { useContext } from "react";
 import { Link } from "react-router-dom";
-import { ContextDetails } from "../../Context/contextDetails/ContextDetails";
+import { useGamesDetails } from "../../hooks/useGamesDetails";
 
 export const Genres = () => {
-  const { data } = useContext(ContextDetails);
-  const { genres } = data;
+  const { data } = useGamesDetails();
+
+  const genres = data.details.genres;
   return (
     <>
       {genres && (

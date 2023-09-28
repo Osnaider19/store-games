@@ -1,12 +1,13 @@
-import React, { useContext } from "react";
-import { ContextDetails } from "../../Context/contextDetails/ContextDetails";
+import { useGamesDetails } from "../../hooks/useGamesDetails";
+
 
 export const Publisher = () => {
-  const { data } = useContext(ContextDetails);
+  const { data } = useGamesDetails();
+  const publishers = data.details.publishers
   return (
     <div>
       <h3 className="text-lg">Publisher</h3>
-      {data.publishers?.map((publishe) => (
+      {publishers?.map((publishe) => (
         <div key={publishe.id}>
           <span>{publishe.name}</span>
         </div>

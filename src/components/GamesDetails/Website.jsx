@@ -1,17 +1,19 @@
-import React, { useContext } from "react";
-import { ContextDetails } from "../../Context/contextDetails/ContextDetails";
+import { useGamesDetails } from "../../hooks/useGamesDetails";
+
+
 
 export const Website = () => {
-  const { data } = useContext(ContextDetails);
+  const { data } = useGamesDetails();
+  const website = data.details.website;
   return (
     <div className="pt-3">
       <p className="text-lg opacity-70 font-semibold">Website</p>
       <a
-        href={data.website}
+        href={website}
         target="_blank"
         className="hover:opacity-70 hover:underline"
       >
-        {data.website}
+        {website}
       </a>
     </div>
   );

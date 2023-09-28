@@ -1,13 +1,13 @@
-import React, { useContext } from "react";
-import { ContextDetails } from "../../Context/contextDetails/ContextDetails";
+import { useGamesDetails } from "../../hooks/useGamesDetails";
 
 export const Background = () => {
-  const { data } = useContext(ContextDetails);
+  const { data } = useGamesDetails();
+  const background = data?.details.background_image;
   return (
     <>
       <div
         style={{
-          backgroundImage: `url(${data.background_image?.replace(
+          backgroundImage: `url(${background?.replace(
             "media/games/",
             "media/resize/1280/-/games/"
           )})`,
@@ -20,7 +20,8 @@ export const Background = () => {
       <div
         className="absolute left-0 top-0 w-full h-[100vh] z-20"
         style={{
-          backgroundImage: "linear-gradient(to bottom, transparent, transparent, transparent, #181818, #181818)",
+          backgroundImage:
+            "linear-gradient(to bottom, transparent, transparent, transparent, #181818, #181818)",
         }}
       ></div>
       <div

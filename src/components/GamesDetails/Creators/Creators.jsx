@@ -1,26 +1,24 @@
 import React from "react";
-import { useFetch } from "../../../hooks/useFech";
-import { URL, API_KEY } from "../../../config/config";
-import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import "./creators.css";
 import { BackgroundCreators } from "./BackgroundCreators";
+import { useGamesDetails } from "../../../hooks/useGamesDetails";
 export const Creators = () => {
-  const { id } = useParams();
-  const { data } = useFetch(
-    `${URL}/games/${id}/development-team?key=${API_KEY}`
-  );
- 
+  const { data } = useGamesDetails();
+  const creators = data.creator.results
   return (
     <div className="">
       {/* {console.log(data)} */}
 
-      {data?.results?.length !== 0 && (
+      {creators?.length !== 0 && (
         <div className="w-full relative ">
           <h4 className="text-3xl py-4 font-semibold">Creators</h4>
           <ul className="flex min-w-full relative  items-center overflow-hidden gap-7 overflow-x-auto container__creators">
-            {data?.results?.map((creator) => (
-              <li className="relative px-3 mb-4 py-7 flex flex-col justify-center items-center  max-w-[300px] min-w-[300px] rounded-xl overflow-hidden border border-[#ffffff20] " key={creator.id}>
+            {creators?.map((creator) => (
+              <li
+                className="relative px-3 mb-4 py-7 flex flex-col justify-center items-center  max-w-[300px] min-w-[300px] rounded-xl overflow-hidden border border-[#ffffff20] "
+                key={creator.id}
+              >
                 <BackgroundCreators background={creator.image_background} />
                 <div className="flex flex-col justify-center items-center w-full z-10">
                   <span className="py-3 font-semibold text-lg">

@@ -1,22 +1,23 @@
-import React, { useContext } from "react";
-import { ContextDetails } from "../../Context/contextDetails/ContextDetails";
+
 import { ScoreColor } from "../../helpers/ScoreColor";
+import { useGamesDetails } from "../../hooks/useGamesDetails";
 export const Metacritic = () => {
-  const { data } = useContext(ContextDetails);
+  const { data } = useGamesDetails();
+  const metacritic = data.details.metacritic
   return (
     <>
-      {data.metacritic && (
+      {metacritic && (
         <div>
           <p className="text-lg">Metascore</p>
           <div className="py-1 flex flex-col justify-center items-start">
             <span
               className={`text-xl py-1 px-1 border-2 rounded-lg font-semibold`}
               style={{
-                color: `${ScoreColor(data.metacritic)}`,
-                border: `2px solid ${ScoreColor(data.metacritic)}`,
+                color: `${ScoreColor(metacritic)}`,
+                border: `2px solid ${ScoreColor(metacritic)}`,
               }}
             >
-              {data.metacritic}
+              {metacritic}
             </span>
           </div>
         </div>

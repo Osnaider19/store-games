@@ -1,13 +1,13 @@
-import React, { useContext } from "react";
-import { ContextDetails } from "../../Context/contextDetails/ContextDetails";
+import { useGamesDetails } from "../../hooks/useGamesDetails";
+
 
 export const Requirements = () => {
-  const { data } = useContext(ContextDetails);
+  const { data } = useGamesDetails();
+  const platforms = data.details.platforms
   return (
     <div className="relative flex justify-start items-center  w-full lg:w-[50%] py-4">
-      {/* {console.log(data)} */}
       <div>
-        {data.platforms?.map((plat) => (
+        {platforms?.map((plat) => (
           <div key={plat.platform.id}>
             {plat.requirements && (
               <>

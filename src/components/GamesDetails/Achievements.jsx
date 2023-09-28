@@ -1,20 +1,18 @@
-import { useFetch } from "../../hooks/useFech";
-import { API_KEY, URL } from "../../config/config";
-import { useParams } from "react-router-dom";
+import { useGamesDetails } from "../../hooks/useGamesDetails";
+
 export const Achievements = () => {
-  const { id } = useParams();
-  const { data } = useFetch(`${URL}/games/${id}/achievements?key=${API_KEY}`);
+  const { data } = useGamesDetails();
+  const archievements = data?.archievements.results
   return (
     <>
-      {data?.results?.length >  0  && (
+      {archievements?.length >  0  && (
         <div className="relative w-full  bg-[#181818] py-4">
-          {/* {console.log(data)} */}
           <div>
             <h3 className="text-3xl  font-semibold capitalize py-4">
               Achivements
             </h3>
             <ul className="flex flex-wrap w-full  justify-between gap-3">
-              {data?.results?.map((achievement) => (
+              {archievements?.map((achievement) => (
                 <li
                   key={achievement.id}
                   className="flex  max-w-[400px] w-full "
