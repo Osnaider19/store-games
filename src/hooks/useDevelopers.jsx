@@ -12,21 +12,27 @@ export function useDevelopers() {
     hasNextPage,
     isFetchingNextPage,
     isError,
-  } = useInfiniteQuery(["games"], () => getDevelopers({ pageParam : 1 ,   name} ), {
-    getNextPageParam: (lastPage) => lastPage.nextCursor,
-    refetchOnWindowFocus: false,
-    refetchInterval: false,
-    refetchOnMount: false,
-  });
-  const games = data?.pages?.flatMap((page) => page.games) ?? [];
+    refetch,
+  } = useInfiniteQuery(
+    ["developers"],
+    ({pageParam = 1 }) => getDevelopers(pageParam, name),
+    {
+      getNextPageParam: (lastPage) => lastPage.nextCursor,
+      refetchOnWindowFocus: false,
+      refetchInterval: false,
+      refetchOnMount: false,
+    }
+  );
+  
 
   return {
-    games,
+    data,
     error,
     isFetchingNextPage,
     isLoading,
     fetchNextPage,
     hasNextPage,
     isError,
+    refetch,
   };
 }
