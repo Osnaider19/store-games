@@ -1,7 +1,9 @@
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { getGames } from "../services/getGames";
-
+import { useState } from "react";
 export function useGames() {
+  const [ordering, setOrdering] = useState(null);
+  const [date, setDate] = useState(null);
   const {
     data,
     error,
@@ -9,23 +11,37 @@ export function useGames() {
     fetchNextPage,
     hasNextPage,
     isFetchingNextPage,
-    isError
-  } = useInfiniteQuery(["games"], getGames, {
-    getNextPageParam: (lastPage) => lastPage.nextCursor,
-    refetchOnWindowFocus: false,
-    refetchInterval: false,
-    refetchOnMount: false,
-  });
-  const games = data?.pages?.flatMap((page) => page.games) ?? [];
+    isError,
+    refetch,
+    isRefetching,
+    remove,
+
+  } = useInfiniteQuery(
+    ["games"],
+    ({ pageParam = 1 }) => getGames(pageParam, ordering , date),
+    {
+      getNextPageParam: (lastPage) => lastPage.nextCursor,
+      refetchOnWindowFocus: false,
+      refetchInterval: false,
+      refetchOnMount: false,
+      
+    }
+  );
 
   return {
-    games,
+    data,
     error,
     isFetchingNextPage,
     isLoading,
     fetchNextPage,
+    refetch,
     hasNextPage,
     isError,
-    
+    setOrdering,
+    ordering,
+    isRefetching,
+    remove,
+    date,
+    setDate,
   };
 }
