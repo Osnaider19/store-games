@@ -1,17 +1,18 @@
 import React from "react";
 import { ItemMenu } from "./ItemMenu";
-import { BiBarChartAlt2 } from "react-icons/bi";
+import { IconBestYears } from "./IconBestYears";
+import { IconBestLast } from "./IconBestLast";
 function Top() {
   return (
     <div>
-      <span className="block text-xl font-bold py-2 px-1">Top</span>
+      <span className="block text-xl  py-2 px-1">Top</span>
       <ItemMenu
-        icon={<BiBarChartAlt2 />}
+        icon={<IconBestLast />}
         link={`/discover/last-30-days`}
         name={"Last 30 days"}
       />
       <ItemMenu
-        icon={<BiBarChartAlt2 />}
+        icon={<IconBestYears />}
         link={`/discover/best-year`}
         name={"Best of the years"}
       />

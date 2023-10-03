@@ -18,7 +18,7 @@ export const ItemMenu = ({ link, name, icon }) => {
   return (
     <NavLink to={link}>
       <li className="flex items-center py-3 hover:bg-[#332e2e] rounded-md " onClick={handelvisiblemenu}>
-        <i className="px-3  py-1 text-xl">{icon}</i>
+        <div className="px-3  py-1 text-xl">{icon}</div>
         <div>
           <span className="text-lg">{name}</span>
         </div>

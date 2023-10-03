@@ -13,7 +13,7 @@ import {
 export const Genres = () => {
   return (
     <div>
-      <span className="block text-xl font-bold py-2 px-1">Genres</span>
+      <span className="block text-xl  py-2 px-1">Genres</span>
       <ItemMenu icon={<Action />} link={`genres/action`} name={"Action"} />
       <ItemMenu icon={<Adventure />} link={`genres/adventure`} name={"Adventure"} />
       <ItemMenu icon={<Strategy />} link={`genres/strategy`} name={"Strategy"} />
