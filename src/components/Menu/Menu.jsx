@@ -9,8 +9,6 @@ import { Search } from "../Search/Search";
 import { HomeIcon } from "./IconHome";
 import { Mando } from "./Mando";
 
-
-
 export const Menu = () => {
   return (
     <>

@@ -1,5 +1,3 @@
-import React from "react";
-import { Link } from "react-router-dom";
 import { NavLink as NavLinkRR } from "react-router-dom";
 import { handelvisiblemenu } from "../../helpers/menuVisible";
 export const ItemMenu = ({ link, name, icon }) => {
