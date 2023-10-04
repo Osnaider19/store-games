@@ -1,30 +1,38 @@
-import React, { useContext, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { Card } from "../Card/Card";
 import { Loader } from "../Loader/Loader";
 import { FiltersOrdering } from "../Filters/FiltersOrdering";
 import { FiltersDate } from "../Filters/FiltersDate";
-import { ContextTags } from "../../Context/ContextTags/ContextTags";
-import { Pagination } from "../Pagination/Pagination";
 import { Footer } from "../Footer/Footer";
-import { Error } from "../Errors/Error";
-import { NoResults } from "../Games/NoResults";
+import { useTags } from "../../hooks/useTags";
+import { Loadmore } from "../buttons/Loadmore";
+import { LoaderFeching } from "../Loader/loaderFeching";
+import { useQueryClient } from "@tanstack/react-query";
 export const Tags = () => {
   const { name } = useParams();
+  const queryClient = useQueryClient();
   const {
     data,
-    isPending,
-    error,
-    page,
-    updateOrdering,
-    paginationNext,
-    paginationPrevious,
-    updateDate,
-  } = useContext(ContextTags);
+    isError,
+    isLoading,
+    isFetchingNextPage,
+    date,
+    ordering,
+    setDate,
+    setOrdering,
+    fetchNextPage,
+    hasNextPage,
+  } = useTags();
+  const reloadFirstPage = () => {
+    fetchNextPage({ pageParam: 1 });
+  };
   useEffect(() => {
-    scrollTo(0, 0);
-  }, [page]);
-  
+    queryClient.removeQueries({ queryKey: ["Tags"], exact: true });
+    reloadFirstPage();
+  }, [ordering, date, name]);
+
+  const games = data?.pages?.flatMap((page) => page?.games) ?? [];
   return (
     <div className="pt-[60px] px-4 md:px-8">
       <div className="flex flex-col justify-between sm:flex-row">
@@ -32,20 +40,17 @@ export const Tags = () => {
           Games {name.replace(/-/g, " ")}
         </h1>
         <div className="flex w-full flex-col items-center  gap-2 sm:flex-row sm:w-auto md:px-5">
-          <FiltersOrdering updateFilters={updateOrdering} />
-          <FiltersDate updateDate={updateDate} />
+          <FiltersOrdering setOrdering={setOrdering} />
+          <FiltersDate setDate={setDate} />
         </div>
       </div>
-      {isPending && <Loader />}
-      {data?.results?.length <= 0 && <NoResults />}
-      {error && <Error status={error.status} statusText={error.statusText} />}
+      {isLoading && <Loader />}
+      {games?.length <= 1 && isLoading === false && <ErrorFeching />}
       <div className="flex flex-wrap justify-center gap-3 py-10 sm:justify-between">
-        {data?.results.map((game) => (
-          <div
-            className="relative w-full max-w-[170px]  md:max-w-[250px] h-full md:min-w-[250px] overflow-hidden hover:-translate-y-3 transition-transform duration-200"
-            key={game.id}
-          >
+        {games[0] &&
+          games?.map((game) => (
             <Card
+              key={game.id}
               img={game.background_image}
               name={game.name}
               id={game.id}
@@ -53,15 +58,20 @@ export const Tags = () => {
               rating={game.rating}
               date={game.released}
             />
-          </div>
-        ))}
+          ))}
       </div>
-      <Pagination
-        next={data?.next}
-        previous={data?.previous}
-        paginationNext={paginationNext}
-        paginationPrevious={paginationPrevious}
-      />
+      {hasNextPage && (
+        <div className="flex w-full justify-center items-center">
+          {isFetchingNextPage ? (
+            <LoaderFeching />
+          ) : (
+            <Loadmore fetchNextPage={fetchNextPage} />
+          )}
+        </div>
+      )}
+      {hasNextPage === false && games.length > 1 && (
+        <span>no hay mas resultados </span>
+      )}
       <Footer />
     </div>
   );
