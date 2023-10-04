@@ -14,6 +14,7 @@ import { TagsPage } from "./components/Tags/TagsPage";
 import { QueryClientProvider , QueryClient } from "@tanstack/react-query";
 import { BestYearsPage } from "./page/BestYearsPage";
 import { GenresPage } from "./page/GenresPage";
+import { BestLastPage } from "./page/BestLastPage";
 function App() {
 
   const queryClient = new QueryClient();
@@ -37,7 +38,7 @@ function App() {
           <Route path="/games/filters/:name" element={<GamesPage />}></Route>
           <Route
             path="/discover/last-30-days"
-            element={<Last30DaysPage />}
+            element={<BestLastPage />}
           ></Route>
           <Route path="/discover/best-year" element={<BestYearsPage />}></Route>
           <Route path="*" element={<Page404 />}></Route>
