@@ -14,7 +14,7 @@ export const Card = ({ img, name, id, genres, date, rating }) => {
               src={
                 img
                   ? img?.replace("media/", `media/resize/420/-/`)
-                  : "../../nocargimg.png"
+                  : "../../sin-foto.png"
               }
               alt={name}
               loading="lazy"
@@ -23,7 +23,7 @@ export const Card = ({ img, name, id, genres, date, rating }) => {
               }`}
             />
           </div>
-          <p className="text-xl px-2 py-1 font-semibold hover:opacity-80">
+          <p className="text-xl px-2 py-1 font-semibold hover:opacity-80 line-clamp-2">
             {name}
           </p>
         </Link>

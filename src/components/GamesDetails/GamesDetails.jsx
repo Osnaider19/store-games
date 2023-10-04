@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Background } from "./Background";
 import { About } from "./About";
 import { Screenshots } from "./Screenshots";
@@ -25,8 +25,8 @@ import { Website } from "./Website";
 import { useGamesDetails } from "../../hooks/useGamesDetails";
 export const GamesDetails = () => {
   const { id } = useParams();
-  const { data , isLoading , refetch} = useGamesDetails(id);
-  console.log(data)
+  const { data , isLoading , refetch } = useGamesDetails(id);
+  
   useEffect(() => {
     scrollTo(0, 0);
     refetch()
@@ -78,7 +78,7 @@ export const GamesDetails = () => {
                   </div>
                 </div>
               </div>
-              {/* {stateModal && <ModalScreenshots />} */}
+               
             </div>
           </div>
         </>

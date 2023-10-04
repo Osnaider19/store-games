@@ -1,15 +1,19 @@
+import { useState } from "react";
 import { useGamesDetails } from "../../hooks/useGamesDetails";
+import { ModalScreenshots } from "../Modals/ModalScreenshots";
 export const Screenshots = () => {
   const { data } = useGamesDetails();
+  const [stateModal, setStateModal] = useState(false);
+  const [filter, setFilter] = useState(null);
   const screenshots = data?.screenshots.results;
   const handleImageClick = (imgId) => {
     const imgFilter = screenshots.find((screen) => screen.id === imgId);
-    console.log(imgFilter);
-    //document.documentElement.style.overflow = "hidden";
+    setFilter(imgFilter);
+    setStateModal(true);
+    document.documentElement.style.overflow = "hidden";
   };
   return (
     <>
-      {/* {console.log(data)} */}
       {screenshots && (
         <div className="relative w-full bg-[#181818] py-4">
           <h3 className="text-3xl  font-semibold capitalize py-2">
@@ -33,6 +37,13 @@ export const Screenshots = () => {
             ))}
           </div>
         </div>
+      )}
+      {stateModal && (
+        <ModalScreenshots
+          stateModal={stateModal}
+          setStateModal={setStateModal}
+          filter={filter}
+        />
       )}
     </>
   );

@@ -9,7 +9,9 @@ import { useEffect } from "react";
 import { ErrorFeching } from "../Errors/ErrorFeching";
 import { Loadmore } from "../buttons/Loadmore";
 import { FiltersDate } from "../Filters/FiltersDate";
+import { useQueryClient } from "@tanstack/react-query";
 export const Games = () => {
+  const queryClient = useQueryClient();
   const {
     data,
     fetchNextPage,
@@ -19,20 +21,20 @@ export const Games = () => {
     isError,
     setOrdering,
     ordering,
-    refetch,
     date,
     setDate,
   } = useGames();
-
+  const reloadFirstPage = () => {
+    fetchNextPage({ pageParam: 1 });
+  };
+  useEffect(() => {
+    queryClient.removeQueries({ queryKey: ["games"], exact: true });
+    reloadFirstPage();
+  }, [ordering, date]);
   useEffect(() => {
     scrollTo(0, 0);
-    refetch();
-  }, [ordering, date]);
-
+  }, []);
   const games = data?.pages?.flatMap((page) => page.games) ?? [];
-  if (isLoading) return <Loader />;
-  if (games.length <= 0) return <NoResults />;
-  if (isError) return <ErrorFeching />;
 
   return (
     <>
@@ -46,24 +48,23 @@ export const Games = () => {
             <FiltersDate setDate={setDate} />
           </div>
         </div>
+        {isLoading && <Loader />}
+        {isError && <ErrorFeching />}
+        {games.length <= 0 && isLoading === false && <NoResults />}
         <div
           className="flex flex-wrap justify-center gap-3 sm:justify-between "
           id="mas"
         >
           {games?.map((game) => (
-            <div
-              className="relative w-full max-w-[170px]  md:max-w-[250px] h-full md:min-w-[250px] overflow-hidden hover:-translate-y-3 transition-transform duration-200"
+            <Card
+              img={game.background_image}
+              date={game.released}
+              genres={game.genres}
+              id={game.id}
+              name={game.name}
+              rating={game.rating}
               key={game.id}
-            >
-              <Card
-                img={game.background_image}
-                date={game.released}
-                genres={game.genres}
-                id={game.id}
-                name={game.name}
-                rating={game.rating}
-              />
-            </div>
+            />
           ))}
         </div>
         {hasNextPage && (

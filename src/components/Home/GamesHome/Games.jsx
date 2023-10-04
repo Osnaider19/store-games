@@ -20,19 +20,15 @@ export const Games = () => {
           {isLoading && <LoaderCard />}
           {isError && <p>error</p>}
           {games?.map((game) => (
-            <div
-              className="relative w-full max-w-[170px]  md:max-w-[250px] h-full md:min-w-[250px] overflow-hidden hover:-translate-y-3 transition-transform duration-200"
+            <Card
+              img={game.background_image}
+              name={game.name}
+              id={game.id}
+              genres={game.genres}
+              rating={game.rating}
+              date={game.released}
               key={game.id}
-            >
-              <Card
-                img={game.background_image}
-                name={game.name}
-                id={game.id}
-                genres={game.genres}
-                rating={game.rating}
-                date={game.released}
-              />
-            </div>
+            />
           ))}
         </div>
       </div>

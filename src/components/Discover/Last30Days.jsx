@@ -3,7 +3,6 @@ import { Card } from "../Card/Card";
 import { Loader } from "../Loader/Loader";
 import { Footer } from "../Footer/Footer";
 import { FiltersOrdering } from "../Filters/FiltersOrdering";
-import { NoResults } from "../Games/NoResults";
 import { useBestLast } from "../../hooks/useBestLast";
 import { ErrorFeching } from "../Errors/ErrorFeching";
 import { LoaderFeching } from "../Loader/loaderFeching";
@@ -20,7 +19,7 @@ export const Last30Days = () => {
     hasNextPage,
     ordering,
     setOrdering,
-    error,
+    
   } = useBestLast();
   const reloadFirstPage = () => {
     fetchNextPage({ pageParam: 1 });

@@ -1,11 +1,12 @@
 import React from "react";
-import { GamesAll } from "../components/Games/GamesAll";
+import { Games } from "../components/Games/Games";
+
 
 export const GamesPage = () => {
   return (
     <>
       <div className="pt-[60px]">
-        <GamesAll />
+        <Games/>
       </div>
     </>
   );

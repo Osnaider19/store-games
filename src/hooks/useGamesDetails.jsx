@@ -3,7 +3,7 @@ import { getGamesDetails } from "../services/getDetailsGames";
 import { useParams } from "react-router-dom";
 export function useGamesDetails() {
   const { id } = useParams();
-  const { data, isLoading, refetch } = useQuery(
+  const { data, isLoading, refetch , isFetching } = useQuery(
     ["detailsGames"],
     () => getGamesDetails(id),
     {
@@ -15,5 +15,6 @@ export function useGamesDetails() {
     data,
     isLoading,
     refetch,
+    isFetching,
   };
 }

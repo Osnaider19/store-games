@@ -11,12 +11,9 @@ export const Series = () => {
             <h4 className="text-xl md:text-3xl py-4 font-semibold ">
               Games of the same series
             </h4>
-            <ul className="flex flex-wrap justify-center w-full gap-5 md:gap-3 sm:justify-between sm:gap-1">
-              {series?.map((game) => (
-                <li
-                  className="relative w-full  max-w-[170px]  md:max-w-[250px] h-full md:min-w-[250px] overflow-hidden hover:-translate-y-3 transition-transform duration-200"
-                  key={game.id}
-                >
+            <section className="flex justify-center items-center w-full">
+              <ul className="flex flex-wrap justify-center w-full gap-5 md:gap-3 sm:justify-between sm:gap-1">
+                {series?.map((game) => (
                   <Card
                     img={game.background_image}
                     name={game.name}
@@ -24,10 +21,11 @@ export const Series = () => {
                     genres={game.genres}
                     rating={game.rating}
                     date={game.released}
+                    key={game.id}
                   />
-                </li>
-              ))}
-            </ul>
+                ))}
+              </ul>
+            </section>
           </div>
         </div>
       )}

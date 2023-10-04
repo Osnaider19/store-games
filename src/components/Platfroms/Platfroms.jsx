@@ -1,60 +1,58 @@
-import { useContext, useEffect  , useState} from "react";
+import { useEffect } from "react";
 import { Card } from "../Card/Card";
 import { Loader } from "../Loader/Loader";
-import { Pagination } from "../Pagination/Pagination";
 import { Footer } from "../Footer/Footer";
-import { ContextPlatforms } from "../../Context/ContextPlatforms/ContextPlatforms";
 import { FiltersOrdering } from "../Filters/FiltersOrdering";
 import { FiltersDate } from "../Filters/FiltersDate";
-import { NoResults } from "../Games/NoResults";
-import { Error } from "../Errors/Error";
 import { useParams } from "react-router-dom";
+import { usePlatforms } from "../../hooks/usePlatforms";
+import { LoaderFeching } from "../Loader/loaderFeching";
+import { Loadmore } from "../buttons/Loadmore";
+import { useQueryClient } from "@tanstack/react-query";
+import { ErrorFeching } from "../Errors/ErrorFeching";
 export const Platfroms = () => {
-  const {name} = useParams();
+  const { name } = useParams();
+  const queryClient = useQueryClient();
   const {
     data,
-    isPending,
+    isError,
+    isFetchingNextPage,
+    isLoading,
+    date,
     error,
-    updateOrdering,
-    updateDate,
-    paginationPrevious,
-    paginationNext,
-    page,
-    setIsPending,
-    setPage
-    
-  } = useContext(ContextPlatforms);
-  
+    fetchNextPage,
+    hasNextPage,
+    ordering,
+    setDate,
+    setOrdering,
+  } = usePlatforms();
+  const reloadFirstPage = () => {
+    fetchNextPage({ pageParam: 1 });
+  };
   useEffect(() => {
-    scrollTo(0, 0);
-    setIsPending(true)
-  }, [page , name]);
-  useEffect(() => {
-    setPage(1)
-  }, [name]);
+    queryClient.removeQueries({ queryKey: ["Platforms"], exact: true });
+    reloadFirstPage();
+  }, [ordering, date, name]);
+
+  const games = data?.pages?.flatMap((page) => page?.games) ?? [];
+  console.log(data)
   return (
     <>
-      {/* {console.log(data)}  */}
       <div className="px-5 pt-[60px]">
         <div className="flex flex-col justify-between sm:flex-row">
-          <h1 className="py-3 text-5xl font-bold ">
-            Games of {name}
-          </h1>
+          <h1 className="py-3 text-5xl font-bold ">Games of {name}</h1>
           <div className="flex w-full flex-col items-center  gap-2 sm:flex-row sm:w-auto md:px-5">
-            <FiltersOrdering updateFilters={updateOrdering} />
-            <FiltersDate updateDate={updateDate} />
+            <FiltersOrdering setOrdering={setOrdering} />
+            <FiltersDate setDate={setDate} />
           </div>
         </div>
-        {isPending && <Loader />}
-        {data?.results?.length <= 0 && <NoResults />}
-        {error && <Error status={error.status} statusText={error.statusText} />}
+        {isLoading && <Loader />}
+        {games?.length <= 1 && isLoading === false && <ErrorFeching />}
         <div className="flex flex-wrap w-full gap-3 justify-center md:justify-between py-10 transition-all duration-300">
-          {data?.results.map((game) => (
-            <div
-              className="relative w-full max-w-[170px]  md:max-w-[250px] h-full md:min-w-[250px] overflow-hidden hover:-translate-y-3 transition-transform duration-200"
-              key={game.id}
-            >
+          {games[0] &&
+            games?.map((game) => (
               <Card
+                key={game.id}
                 img={game.background_image}
                 name={game.name}
                 id={game.id}
@@ -62,15 +60,20 @@ export const Platfroms = () => {
                 rating={game.rating}
                 date={game.released}
               />
-            </div>
-          ))}
+            ))}
         </div>
-        <Pagination
-          next={data?.next}
-          previous={data?.previous}
-          paginationNext={paginationNext}
-          paginationPrevious={paginationPrevious}
-        />
+        {hasNextPage && (
+          <div className="flex w-full justify-center items-center">
+            {isFetchingNextPage ? (
+              <LoaderFeching />
+            ) : (
+              <Loadmore fetchNextPage={fetchNextPage} />
+            )}
+          </div>
+        )}
+        {hasNextPage === false && games.length > 1 && (
+          <span>no hay mas resultados </span>
+        )}
         <Footer />
       </div>
     </>

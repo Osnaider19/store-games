@@ -8,13 +8,12 @@ import { ContextSearchProvider } from "./Context/ContextSearch/ContextSearch";
 import { Layout } from "./components/Layout/Layout";
 import { Developers } from "./components/Developers/Developers";
 import { Page404 } from "./page/Page404";
-import { Last30DaysPage } from "./components/Discover/Last30DaysPage";
-import { PlatformsPage } from "./components/Platfroms/PlatformsPage";
-import { TagsPage } from "./components/Tags/TagsPage";
 import { QueryClientProvider , QueryClient } from "@tanstack/react-query";
 import { BestYearsPage } from "./page/BestYearsPage";
 import { GenresPage } from "./page/GenresPage";
 import { BestLastPage } from "./page/BestLastPage";
+import { TagsPage } from "./page/TagsPage";
+import { PlatformsPage } from "./page/PlatformsPage";
 function App() {
 
   const queryClient = new QueryClient();
