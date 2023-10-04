@@ -10,10 +10,10 @@ import { Developers } from "./components/Developers/Developers";
 import { Page404 } from "./page/Page404";
 import { Last30DaysPage } from "./components/Discover/Last30DaysPage";
 import { PlatformsPage } from "./components/Platfroms/PlatformsPage";
-import { BestYearPage } from "./components/Discover/BestYearPage";
 import { TagsPage } from "./components/Tags/TagsPage";
 import { GenresPage } from "./components/Genres/GenresPage";
 import { QueryClientProvider , QueryClient } from "@tanstack/react-query";
+import { BestYearsPage } from "./page/BestYearsPage";
 function App() {
 
   const queryClient = new QueryClient();
@@ -39,7 +39,7 @@ function App() {
             path="/discover/last-30-days"
             element={<Last30DaysPage />}
           ></Route>
-          <Route path="/discover/best-year" element={<BestYearPage />}></Route>
+          <Route path="/discover/best-year" element={<BestYearsPage />}></Route>
           <Route path="*" element={<Page404 />}></Route>
         </Routes>
       </Layout>
