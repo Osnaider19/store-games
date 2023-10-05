@@ -43,7 +43,7 @@ export const Games = () => {
           <h1 className="text-4xl w-full font-semibold py-4 sm:w-auto  md:text-6xl">
             All games
           </h1>
-          <div className="flex w-full flex-col items-center  gap-2 sm:flex-row sm:w-auto md:px-5 ">
+          <div className="flex w-full py-3 flex-col items-center  gap-2 sm:flex-row sm:w-auto md:px-5 ">
             <FiltersOrdering setOrdering={setOrdering} />
             <FiltersDate setDate={setDate} />
           </div>
@@ -52,7 +52,7 @@ export const Games = () => {
         {isError && <ErrorFeching />}
         {games.length <= 0 && isLoading === false && <NoResults />}
         <div
-          className="flex flex-wrap justify-center gap-3 sm:justify-between "
+          className="flex flex-wrap justify-center gap-3 sm:justify-between pt-3"
           id="mas"
         >
           {games?.map((game) => (

@@ -30,10 +30,10 @@ export const BestYears = () => {
       <div>
         <div className="px-4 md:px-8">
           <div className="flex flex-col justify-between sm:flex-row">
-            <h1 className="text-3xl md:text-5xl font-semibold pt-7 capitalize">
+            <h1 className="text-5xl md:text-5xl font-semibold py-3 capitalize">
               Best of the year
             </h1>
-            <div className="flex w-full flex-col items-center  gap-2 sm:flex-row sm:w-auto md:px-5 py-2">
+            <div className="flex w-full flex-col items-center  gap-2 sm:flex-row sm:w-auto md:px-4 py-2">
               <FiltersOrdering setOrdering={setOrdering} />
             </div>
           </div>

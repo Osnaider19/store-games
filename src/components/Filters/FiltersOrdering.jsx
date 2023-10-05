@@ -2,7 +2,7 @@ import { ordering } from "./filters";
 import { Select, SelectItem } from "@tremor/react";
 export const FiltersOrdering = ({ setOrdering }) => {
   return (
-    <div className="max-w-sm mx-auto space-y-6">
+    <div className="max-w-sm mx-auto space-y-6 w-full md:w-auto">
       <Select
         onValueChange={(e) => setOrdering(e)}
         placeholder="Ordering by popularity"
