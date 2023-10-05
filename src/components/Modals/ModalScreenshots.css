@@ -7,8 +7,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: rgb(0, 0, 0);
-    z-index: 9999;
+    -webkit-backdrop-filter: blur(3px);
+    backdrop-filter: blur(3px);
+    z-index: 100;
     transition: all .5s ease-out;
 }
 .conatiner__button__close__modal{
@@ -22,7 +23,7 @@
     align-items: center;
     border-radius: 50%;
     overflow: hidden;
-    z-index: 50;
+    
     top: 10px;
 }
 .close__modal{

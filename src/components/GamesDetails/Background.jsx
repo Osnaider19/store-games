@@ -15,10 +15,10 @@ export const Background = () => {
           backgroundSize: "cover",
           backgroundRepeat: "no-repeat",
         }}
-        className="absolute  left-0  w-full h-screen"
+        className="absolute  left-0  w-full md:h-screen h-[50vh]"
       ></div>
       <div
-        className="absolute left-0 top-0 w-full h-[100vh] z-20"
+        className="absolute left-0 top-0 w-full h-[50vh] md:h-[100vh] z-20"
         style={{
           backgroundImage:
             "linear-gradient(to bottom, transparent, transparent, transparent, #181818, #181818)",

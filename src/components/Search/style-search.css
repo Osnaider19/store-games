@@ -10,7 +10,7 @@
     background: #121212;
     margin: 0 auto;
     max-width: 1360px;
-    z-index: 99;
+    z-index: 50;
   }
 
   .container-search{

@@ -6,18 +6,16 @@ import { Platforms } from "./Platforms";
 import { Date } from "./Date";
 import { Link } from "react-router-dom";
 import { useGetHome } from "../../../hooks/useGetHome";
+import { HiStar } from "react-icons/hi";
+import { ScoreColor } from "../../../helpers/ScoreColor";
 export function Slider() {
   const { data, isError } = useGetHome();
   const games = data?.games.results;
   return (
     <>
-      {isError && (
-        <div className="text-4xl">
-          error en obtner los datos
-        </div>
-      )}
+      {isError && <div className="text-4xl">error en obtner los datos</div>}
       <div className="relative top-[60px] h-screen w-full flex  snap-mandatory overflow-hidden">
-        {games?.slice(16, 17).map((game) => (
+        {games?.slice(19, 20).map((game) => (
           <div key={game.id} className="relative min-w-full snap-x">
             <BackgroundHome background={game.background_image} />
             <div className="flex">
@@ -27,13 +25,28 @@ export function Slider() {
                 </p>
                 <Date released={game.released} />
                 <div className="text-xl">
-                  <RatingStar rating={game.rating} votes={game.ratings_count} />
+                  <div className="flex items-center gap-2 pt-1">
+                    <i className="text-xl text-yellow-400">
+                      <HiStar />
+                    </i>
+                    <p>{game.rating}</p>
+                  </div>
                 </div>
                 <Genres genres={game.genres} />
                 <Platforms platforms={game.parent_platforms} />
                 <div>
-                  <h3>Metascore</h3>
-                  <div>{game.metacritic}</div>
+                  <p className="text-lg">Metascore</p>
+                  <div className="py-1 flex flex-col justify-center items-start">
+                    <span
+                      className={`text-xl py-1 px-1 border-2 rounded-lg font-semibold`}
+                      style={{
+                        color: `${ScoreColor(game?.metacritic)}`,
+                        border: `2px solid ${ScoreColor(game?.metacritic)}`,
+                      }}
+                    >
+                      {game.metacritic}
+                    </span>
+                  </div>
                 </div>
                 <div className="pt-4">
                   <Link to={`/games/${game.id}`}>

@@ -16,7 +16,7 @@ export const Games = () => {
             "linear-gradient( transparent ,  rgb(18, 18, 18) ,  rgb(18, 18, 18) , rgb(18, 18, 18) , rgb(18, 18, 18) , rgb(18, 18, 18) ,  rgb(18, 18, 18) ,  rgb(18, 18, 18),  rgb(18, 18, 18),  rgb(18, 18, 18) ,  rgb(18, 18, 18))",
         }}
       >
-        <div className="relative px-4 w-full flex flex-wrap gap-1 md:gap-5 justify-between py-5 md:px-8 -mt-[300px] md:-mt-[200px]">
+        <div className="relative px-4 w-full flex flex-wrap gap-1 md:gap-5 justify-between py-5 md:px-8 -mt-[320px] md:-mt-[150px]">
           {isLoading && <LoaderCard />}
           {isError && <p>error</p>}
           {games?.map((game) => (
