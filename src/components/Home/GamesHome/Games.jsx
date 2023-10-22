@@ -2,6 +2,7 @@ import { Card } from "../../Card/Card";
 import { LoaderCard } from "../../Loader/LoaderCard";
 import { Slider } from "../Slider/Slider";
 import { useGetHome } from "../../../hooks/useGetHome";
+import { Loader } from "../../Loader/Loader";
 
 export const Games = () => {
   const { data, isError, isLoading } = useGetHome();
@@ -17,7 +18,7 @@ export const Games = () => {
         }}
       >
         <div className="relative px-4 w-full flex flex-wrap gap-1 md:gap-5 justify-between py-5 md:px-8 -mt-[320px] md:-mt-[150px]">
-          {isLoading && <LoaderCard />}
+          {isLoading  && <LoaderCard />}
           {isError && <p>error</p>}
           {games?.map((game) => (
             <Card

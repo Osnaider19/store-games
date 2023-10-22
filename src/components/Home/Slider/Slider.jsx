@@ -8,13 +8,17 @@ import { Link } from "react-router-dom";
 import { useGetHome } from "../../../hooks/useGetHome";
 import { HiStar } from "react-icons/hi";
 import { ScoreColor } from "../../../helpers/ScoreColor";
+import { Loader } from "../../Loader/Loader";
 export function Slider() {
-  const { data, isError } = useGetHome();
+  const { data, isError , isLoading } = useGetHome();
   const games = data?.games.results;
   return (
     <>
       {isError && <div className="text-4xl">error en obtner los datos</div>}
       <div className="relative top-[60px] h-screen w-full flex  snap-mandatory overflow-hidden">
+        {isLoading  && <div className="h-screen w-full flex justify-center items-center">
+          <Loader/>
+        </div>}
         {games?.slice(19, 20).map((game) => (
           <div key={game.id} className="relative min-w-full snap-x">
             <BackgroundHome background={game.background_image} />
