@@ -40,7 +40,8 @@ export const Games = () => {
   }, [inView]);
 
   const games = data?.pages?.flatMap((page) => page.games) ?? [];
-  console.log(games);
+  
+
   return (
     <>
       <div className="px-4 py-4 w-[80%] mx-auto">
